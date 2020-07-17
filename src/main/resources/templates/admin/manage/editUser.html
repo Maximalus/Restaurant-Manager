@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Змінити дані користувача</title>
+</head>
+<body>
+<h2>Змінити дані користувача</h2>
+<form th:action="@{/editUser(id=${user.id})}" th:method="post">
+    <label>Id</label>
+    <input th:value="${user.id}" readonly="readonly"><br>
+    <label>Прізвище</label>
+    <input th:value="${user.lastName}" th:field="${user.lastName}"><br>
+    <label>Ім'я</label>
+    <input th:value="${user.firstName}" th:field="${user.firstName}"><br>
+    <table>
+        <tr>
+            <td>Роль користувача: </td>
+            <td>
+                <select th:field="${user.userRole}">
+                    <option value="">--</option>
+                    <option th:each="role:${roles}"
+                            th:value="${role}"
+                            th:text="${role}"></option>
+                </select>
+            </td>
+        </tr>
+    </table><br>
+    <button th:type="submit">Зберегти</button>
+</form>
+</body>
+</html>

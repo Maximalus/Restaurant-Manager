@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Додавання нового продукту</title>
+</head>
+<body>
+    <form th:action="@{/productInfo}" th:object="${productInfo}" th:method="post" >
+        <tr th:if="${flowScope.productGroups.empty}">
+            <td colspan="2">Групи продуктів відсутні</td>
+        </tr>
+        <td>
+            <select>
+                <option value="">--</option>
+                <option th:each="productGroup:${flowScope.productGroups}"
+                        th:value="${productGroup.id}"
+                        th:utext="${productGroup.nameOfProductsGroup}"></option>
+            </select>
+        </td>
+        <br>
+
+        <td>
+            <select th:field="*{product}">
+                <option value="">--</option>
+                <option th:each="product:${productGroup.productList}"
+                        th:value="${product.id}"
+                        th:utext="${product.nameOfProduct}"></option>
+            </select>
+        </td><br>
+
+        <label th:for="amount">Кількість порцій</label>
+        <input th:type="numbers" th:field="*{amount}" th:id="amount">
+
+        <input th:type="submit" th:value="Підтвердити">
+
+        <br>
+    </form>
+</body>
+</html>
