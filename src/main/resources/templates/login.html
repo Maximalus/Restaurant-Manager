@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Логін</title>
+</head>
+<body>
+<form th:action="@{/login}" th:method="post">
+    <label>Електронна адреса</label>
+    <input type="text" name="email" placeholder="Електронна адреса"><br>
+    <label>Пароль</label>
+    <input type="password" name="password" placeholder="Пароль"><br>
+    <input type="submit" value="Логін"><br>
+    <span>Новий користувач? <a href="/" th:href="@{/registration}">Реєстрація</a></span><br>
+</form>
+</body>
+</html>

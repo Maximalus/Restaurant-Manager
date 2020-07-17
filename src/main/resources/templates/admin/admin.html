@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель адміністратора</title>
+    <link type="text/css" rel="stylesheet" href="../../static/css/style.css">
+</head>
+<body>
+    <div id="admin_block">
+        <h1>Панель адміністратора</h1><br>
+        
+        <table id="admin_table">
+            <tr>
+                <td>
+                    <h3>Користувачі</h3><br>
+                    <a th:href="@{/admin/manage/users}">Управління користувачами</a><br>
+                    <a>Розподіл користувачів між закладами</a><br>
+                </td>
+                <td>
+                    <h3>Заклади</h3><br>
+                    <a>Управління закладами</a><br>
+                </td>
+                <td>
+                    <h3>Інгредієнти</h3><br>
+                    <a>Створення інгредієнтів</a><br>
+                    <a>Управління інгредієнтами</a><br>
+                </td>
+                 <td>
+                    <h3>Продукти</h3><br>
+                    <a>Створення продуктів</a><br>
+                    <a>Управління продуктами</a><br>
+                    <a>Групування продуктів</a><br>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Загальна інформація про замовлення</title>
+</head>
+<body>
+    <form th:action="@{/generalInfo}" th:method="post">
+        <label th:for="amountOfGuests">Кількість гостей</label>
+        <input th:type="numbers" th:field="${amountOfGuests}" th:id="amountOfGuests">
+
+        <label th:for="numberOfTable">Номер столу</label>
+        <input th:type="numbers" th:field="${numberOfTable}" th:id="numberOfTable">
+
+        <input th:type="submit" th:value="Підтвердити">
+    </form>
+</body>
+</html>
