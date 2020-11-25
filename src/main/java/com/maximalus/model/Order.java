@@ -1,12 +1,8 @@
 package com.maximalus.model;
 
-import com.maximalus.model.Product;
-import com.maximalus.model.User;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

@@ -37,7 +37,7 @@ public class ReportService {
         generalReport.setOutlet(outletRepository.getOne(outletId));
         generalReport.setNumberOfCustomers(numberOfCustomers);
         generalReport.setNumberOfOrders(numberOfOrders);
-        generalReport.setNumberOfUnPaidOrders(numberOfUnPaidOrders);
+        generalReport.setNumberOfUnpaidOrders(numberOfUnPaidOrders);
         reportRepository.save(generalReport);
     }
 

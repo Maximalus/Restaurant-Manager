@@ -5,9 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -24,12 +24,16 @@ public class GeneralReport extends Report{
     private int numberOfCustomers;
 
     @Column(name="NUMBERS_OF_UNPAID_ORDERS")
-    private int numberOfUnPaidOrders;
+    private int numberOfUnpaidOrders;
 
-    public GeneralReport(Outlet outlet, LocalDateTime creationDate, int numberOfOrders, int numberOfCustomers, int numberOfUnPaidOrders) {
+    public GeneralReport(Outlet outlet,
+                         LocalDateTime creationDate,
+                         int numberOfOrders,
+                         int numberOfCustomers,
+                         int numberOfUnpaidOrders) {
         super(outlet, creationDate);
         this.numberOfOrders = numberOfOrders;
         this.numberOfCustomers = numberOfCustomers;
-        this.numberOfUnPaidOrders = numberOfUnPaidOrders;
+        this.numberOfUnpaidOrders = numberOfUnpaidOrders;
     }
 }
