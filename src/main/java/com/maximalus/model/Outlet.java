@@ -11,16 +11,16 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "OUTLETS")
+@Table(name = "outlets")
 public class Outlet {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name="NAME_OF_COLUMN")
+    @Column(nullable = false)
     private String nameOfOutlet;
 
     @Setter(AccessLevel.PRIVATE)

@@ -9,28 +9,28 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode
 @ToString
 @Entity
-@Table(name="USERS")
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name="FIRST_NAME")
+    @Column(nullable = false)
     private String firstName;
 
-    @Column(name="LAST_NAME")
+    @Column(nullable = false)
     private String lastName;
 
-    @Column(name="EMAIL")
+    @Column(nullable = false)
     private String email;
 
-    @Column(name="PASSWORD")
+    @Column(nullable = false)
     private String password;
 
-    @Column(name="PASSWORD_C0NFIRM")
+    @Column(nullable = false)
     private String passwordConfirm;
 
     @Enumerated(EnumType.STRING)

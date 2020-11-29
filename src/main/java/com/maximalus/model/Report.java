@@ -3,7 +3,6 @@ package com.maximalus.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 //todo create foreign key
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "REPORTS")
+@Table(name = "reports")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Report {
     @Id
@@ -24,7 +23,7 @@ public abstract class Report {
     @OneToOne(cascade = CascadeType.ALL)
     private Outlet outlet;
 
-    @Column(name="TIME_OF_CREATION")
+    @Column(nullable = false)
     private LocalDateTime creationDate = LocalDateTime.now();
 
     public Report(Outlet outlet, LocalDateTime creationDate) {

@@ -15,15 +15,15 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @Entity
-@Table(name="GENERAL_REPORTS")
+@Table(name="general_reports")
 public class GeneralReport extends Report{
-    @Column(name="NUMBER_OF_ORDERS")
+    @Column(nullable = false)
     private int numberOfOrders;
 
-    @Column(name = "NUMBER_OF_CUSTOMERS")
+    @Column(nullable = false)
     private int numberOfCustomers;
 
-    @Column(name="NUMBERS_OF_UNPAID_ORDERS")
+    @Column(nullable = false)
     private int numberOfUnpaidOrders;
 
     public GeneralReport(Outlet outlet,

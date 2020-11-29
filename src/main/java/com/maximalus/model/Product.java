@@ -11,28 +11,31 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    @Column(nullable = false)
     private String nameOfProduct;
+
+    @Column(nullable = false)
     private double costPerUnit;
-    private int numberOfServings;
-    private double totalPrice;
+
+    @Column(nullable = false)
     private int availableQuantity;
 
     @ElementCollection
     private List<Recipe> recipeList = new ArrayList<>();
 
-    public Product(String nameOfProduct, double costPerUnit, int numberOfServings, double totalPrice, int availableQuantity, List<Recipe> recipeList) {
+    public Product(String nameOfProduct, double costPerUnit,
+                   int availableQuantity, List<Recipe> recipeList) {
         this.nameOfProduct = nameOfProduct;
         this.costPerUnit = costPerUnit;
-        this.numberOfServings = numberOfServings;
-        this.totalPrice = totalPrice;
         this.availableQuantity = availableQuantity;
         this.recipeList = recipeList;
     }

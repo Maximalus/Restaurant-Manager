@@ -7,28 +7,28 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode
 @ToString
 @Entity
-@Table(name="INGREDIENTS")
+@Table(name="ingredients")
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name="NAME_OF_INGREDIENT")
+    @Column(nullable = false)
     private String nameOfIngredient;
 
-    @Column(name="CURRENT_AMOUNT")
+    @Column(nullable = false)
     private double currentAmountOfIngredient;
 
-    @Column(name="ORDERED_AMOUNT")
+    @Column(nullable = false)
     private double orderedAmountOfIngredient;
 
-    @Column(name="COST_PER_UNIT")
+    @Column(nullable = false)
     private double costPerUnit;
 
-    @Column(name="TOTAL_PRICE")
+    @Column(nullable = false)
     private double totalPrice;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

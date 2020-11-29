@@ -5,8 +5,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 //todo create foreign key
@@ -16,21 +17,21 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @Entity
-@Table(name="SALES_REPORTS")
+@Table(name="sales_reports")
 public class SalesReport extends Report{
-    @Column(name="NUMBERS_OF_UNPAID_ORDERS")
+    @Column(nullable = false)
     private int numberOfUnPaidOrders;
 
-    @Column(name="NUMBER_OF_PAID_ORDERS")
+    @Column(nullable = false)
     private int numberOfPaidOrders;
 
-    @Column(name="TOTAL_SALES")
+    @Column(nullable = false)
     private double totalSales;
 
-    @Column(name="COST_OF_INGREDIENTS")
+    @Column(nullable = false)
     private double costOfIngredients;
 
-    @Column(name="TOTAL_REVENUE")
+    @Column(nullable = false)
     private double totalRevenue;
 
     public SalesReport(Outlet outlet, LocalDateTime creationDate, int numberOfUnPaidOrders, int numberOfPaidOrders, double totalSales, double costOfIngredients, double totalRevenue) {

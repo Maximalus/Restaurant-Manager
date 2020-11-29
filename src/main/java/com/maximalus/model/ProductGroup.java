@@ -14,13 +14,13 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "PRODUCT_GROUPS")
+@Table(name = "product_groups")
 public class ProductGroup {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name="NAME_OF_PRODUCTS_GROUP")
+    @Column(nullable = false)
     private String nameOfProductsGroup;
 
     @Setter(AccessLevel.PRIVATE)

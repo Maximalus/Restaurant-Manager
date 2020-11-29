@@ -9,16 +9,16 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode
 @ToString
 @Entity
-@Table(name="INGREDIENT_GROUPS")
+@Table(name="ingredient_groups")
 public class IngredientGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name="NAME_OF_INGREDIENT_GROUP")
+    @Column(nullable = false)
     private String nameOfIngredientGroup;
 
     @Setter(AccessLevel.PRIVATE)
@@ -30,8 +30,15 @@ public class IngredientGroup {
         this.ingredientList = ingredientList;
     }
 
-    public void addIngredient(List<Ingredient> ingredientList){
-        this.ingredientList.addAll(ingredientList);
-        ingredientList.forEach(ingredient -> ingredient.setIngredientGroup(this));
+    public void addIngredient(Ingredient ingredient){
+        ingredientList.add(ingredient);
+        ingredient.setIngredientGroup(this);
     }
+
+    public void removeIngredient(Ingredient ingredient){
+        ingredientList.remove(ingredient);
+        ingredient.setIngredientGroup(null);
+    }
+
+
 }

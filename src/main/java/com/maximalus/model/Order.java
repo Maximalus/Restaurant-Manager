@@ -12,44 +12,40 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of="id")
+@EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "ORDERS")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @ElementCollection
-    private List<Product> productList = new ArrayList<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Item> itemList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @Column(name = "NUMBER_OF_CUSTOMERS")
+    @Column(nullable = false)
     private int numberOfCustomers;
 
-    @Column(name="NUMBER_OF_TABLE")
+    @Column(nullable = false)
     private int numberOfTable;
 
-    @Column(name="TIME_OF_CREATION")
     private LocalDateTime creationDate = LocalDateTime.now();
 
-    @Column(name="TOTAL_COST")
+    @Column(nullable = false)
     private double totalCost;
 
-    @Column(name="IS_PAYED")
+    @Column(nullable = false)
     private boolean isPayed = false;
 
-    public Order(List<Product> productList,
-                 User user,
-                 int numberOfCustomers,
-                 int numberOfTable,
-                 LocalDateTime creationDate,
-                 double totalCost,
+    public Order(List<Item> itemList, User user,
+                 int numberOfCustomers, int numberOfTable,
+                 LocalDateTime creationDate, double totalCost,
                  boolean isPayed) {
-        this.productList = productList;
+        this.itemList = itemList;
         this.user = user;
         this.numberOfCustomers = numberOfCustomers;
         this.numberOfTable = numberOfTable;
@@ -58,7 +54,13 @@ public class Order {
         this.isPayed = isPayed;
     }
 
-    public void addProducts(Product product){
-        this.productList.add(product);
+    public void addItem(Item item){
+        itemList.add(item);
+        item.setOrder(this);
+    }
+
+    public void removeItem(Item item){
+        itemList.remove(item);
+        item.setOrder(null);
     }
 }
