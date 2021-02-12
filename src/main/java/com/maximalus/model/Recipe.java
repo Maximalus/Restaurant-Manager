@@ -6,11 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToOne;
 
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Embeddable
 public class Recipe {
     @OneToOne
@@ -18,9 +14,4 @@ public class Recipe {
 
     @Column(nullable = false)
     private double amountOfIngredient;
-
-    public Recipe(Ingredient ingredient, double amountOfIngredient) {
-        this.ingredient = ingredient;
-        this.amountOfIngredient = amountOfIngredient;
-    }
 }

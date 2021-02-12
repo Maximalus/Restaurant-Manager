@@ -5,13 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-//todo create foreign key
-
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name = "reports")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -25,9 +19,4 @@ public abstract class Report {
 
     @Column(nullable = false)
     private LocalDateTime creationDate = LocalDateTime.now();
-
-    public Report(Outlet outlet, LocalDateTime creationDate) {
-        this.outlet = outlet;
-        this.creationDate = creationDate;
-    }
 }

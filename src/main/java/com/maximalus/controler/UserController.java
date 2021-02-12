@@ -1,7 +1,6 @@
 package com.maximalus.controler;
 
 import com.maximalus.model.User;
-import com.maximalus.model.UserRole;
 import com.maximalus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
