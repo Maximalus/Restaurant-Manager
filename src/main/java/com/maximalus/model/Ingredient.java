@@ -3,43 +3,36 @@ package com.maximalus.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name="ingredients")
 public class Ingredient {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_generator")
+    @SequenceGenerator(allocationSize = 1, name = "ingredient_generator")
     private Long id;
 
     @Column(nullable = false)
-    private String nameOfIngredient;
+    private String name;
 
     @Column(nullable = false)
-    private double currentAmountOfIngredient;
+    private int currentQuantity;
 
     @Column(nullable = false)
-    private double orderedAmountOfIngredient;
+    private int initialQuantity;
+
+    private BigDecimal totalPrice;
+
+    private LocalDate creationDate = LocalDate.now();
+
+    private LocalDate changingDate;
 
     @Column(nullable = false)
-    private double costPerUnit;
-
-    @Column(nullable = false)
-    private double totalPrice;
+    private BigDecimal costPerUnit;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private IngredientGroup ingredientGroup;
-
-    public Ingredient(String nameOfIngredient, double currentAmountOfIngredient, double orderedAmountOfIngredient, double costPerUnit, double totalPrice, IngredientGroup ingredientGroup) {
-        this.nameOfIngredient = nameOfIngredient;
-        this.currentAmountOfIngredient = currentAmountOfIngredient;
-        this.orderedAmountOfIngredient = orderedAmountOfIngredient;
-        this.costPerUnit = costPerUnit;
-        this.totalPrice = totalPrice;
-        this.ingredientGroup = ingredientGroup;
-    }
 }

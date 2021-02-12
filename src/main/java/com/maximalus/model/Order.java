@@ -1,37 +1,28 @@
 package com.maximalus.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-//todo create foreign key
 
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_generator")
+    @SequenceGenerator(allocationSize = 1, name = "order_generator")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @OneToMany
+    private List<Item> items = new ArrayList<>();
 
     @Column(nullable = false)
     private int numberOfCustomers;
@@ -39,10 +30,17 @@ public class Order {
     @Column(nullable = false)
     private int numberOfTable;
 
+    @Column(nullable = false)
     private LocalDateTime creationDate = LocalDateTime.now();
 
+    @OneToOne
+    private CompanyDiscount companyDiscount;
+
+    @OneToOne
+    private DiscountProof discountProof;
+
     @Column(nullable = false)
-    private double totalCost;
+    private BigDecimal totalCost;
 
     @Column(nullable = false)
     private boolean isPayed = false;

@@ -6,16 +6,13 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name="ingredient_groups")
 public class IngredientGroup {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_group_generator")
+    @SequenceGenerator(allocationSize = 1, name = "ingredient_group_generator")
     private Long id;
 
     @Column(nullable = false)
@@ -24,11 +21,6 @@ public class IngredientGroup {
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(mappedBy = "ingredientGroup", orphanRemoval = true)
     private List<Ingredient> ingredientList = new ArrayList<>();
-
-    public IngredientGroup(String nameOfIngredientGroup, List<Ingredient> ingredientList) {
-        this.nameOfIngredientGroup = nameOfIngredientGroup;
-        this.ingredientList = ingredientList;
-    }
 
     public void addIngredient(Ingredient ingredient){
         ingredientList.add(ingredient);

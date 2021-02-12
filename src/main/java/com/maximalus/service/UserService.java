@@ -1,7 +1,6 @@
 package com.maximalus.service;
 
 import com.maximalus.model.User;
-import com.maximalus.model.UserRole;
 import com.maximalus.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,7 +24,6 @@ public class UserService {
     public void save(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setPassword(passwordEncoder.encode(user.getPasswordConfirm()));
-        user.setUserRole(UserRole.MANAGER);
         userRepository.save(user);
     }
 
@@ -38,7 +36,7 @@ public class UserService {
     }
 
     public List<User> getAll(){
-        return userRepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 
     public User getOne(Long id){

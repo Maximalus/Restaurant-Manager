@@ -6,18 +6,13 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo create foreign key
-
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name = "product_groups")
 public class ProductGroup {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_group_generator")
+    @SequenceGenerator(allocationSize = 1, name = "product_group_generator")
     private Long id;
 
     @Column(nullable = false)
@@ -26,9 +21,4 @@ public class ProductGroup {
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> productList = new ArrayList<>();
-
-    public ProductGroup(String nameOfProductsGroup, List<Product> productList) {
-        this.nameOfProductsGroup = nameOfProductsGroup;
-        this.productList = productList;
-    }
 }
