@@ -1,16 +1,21 @@
 package com.maximalus.model;
 
-import lombok.*;
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
-//todo create foreign key
 
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name="users")
 public class User {
@@ -33,25 +38,12 @@ public class User {
     @Column(nullable = false)
     private String passwordConfirm;
 
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Role role;
 
-    public User(User user) {
-        this.id = user.id;
-        this.email = user.email;
-        this.firstName = user.firstName;
-        this.lastName = user.lastName;
-        this.password = user.password;
-        this.passwordConfirm = user.passwordConfirm;
-        this.userRole = user.userRole;
-    }
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Outlet outlet;
 
-    public User(String firstName, String lastName, String email, String password, String passwordConfirm, UserRole userRole) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.passwordConfirm = passwordConfirm;
-        this.userRole = userRole;
-    }
+    @OneToMany(cascade = CascadeType.MERGE)
+    private List<Order> orderList = new ArrayList<>();
 }

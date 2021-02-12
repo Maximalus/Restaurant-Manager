@@ -1,7 +1,6 @@
 package com.maximalus.service;
 
 import com.maximalus.model.User;
-import com.maximalus.model.UserRole;
 import com.maximalus.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

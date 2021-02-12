@@ -1,5 +1,6 @@
 package com.maximalus.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,10 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@Setter
-@Getter
-@ToString
+@Data
 @Entity
 @Table(name="general_reports")
 public class GeneralReport extends Report{
@@ -25,15 +23,4 @@ public class GeneralReport extends Report{
 
     @Column(nullable = false)
     private int numberOfUnpaidOrders;
-
-    public GeneralReport(Outlet outlet,
-                         LocalDateTime creationDate,
-                         int numberOfOrders,
-                         int numberOfCustomers,
-                         int numberOfUnpaidOrders) {
-        super(outlet, creationDate);
-        this.numberOfOrders = numberOfOrders;
-        this.numberOfCustomers = numberOfCustomers;
-        this.numberOfUnpaidOrders = numberOfUnpaidOrders;
-    }
 }

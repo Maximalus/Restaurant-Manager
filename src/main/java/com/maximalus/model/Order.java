@@ -3,29 +3,26 @@ package com.maximalus.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-//todo create foreign key
 
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name = "orders")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_generator")
+    @SequenceGenerator(allocationSize = 1, name = "order_generator")
     private Long id;
-
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Item> itemList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @OneToMany
+    private List<Item> items = new ArrayList<>();
 
     @Column(nullable = false)
     private int numberOfCustomers;
@@ -33,34 +30,18 @@ public class Order {
     @Column(nullable = false)
     private int numberOfTable;
 
+    @Column(nullable = false)
     private LocalDateTime creationDate = LocalDateTime.now();
 
+    @OneToOne
+    private CompanyDiscount companyDiscount;
+
+    @OneToOne
+    private DiscountProof discountProof;
+
     @Column(nullable = false)
-    private double totalCost;
+    private BigDecimal totalCost;
 
     @Column(nullable = false)
     private boolean isPayed = false;
-
-    public Order(List<Item> itemList, User user,
-                 int numberOfCustomers, int numberOfTable,
-                 LocalDateTime creationDate, double totalCost,
-                 boolean isPayed) {
-        this.itemList = itemList;
-        this.user = user;
-        this.numberOfCustomers = numberOfCustomers;
-        this.numberOfTable = numberOfTable;
-        this.creationDate = creationDate;
-        this.totalCost = totalCost;
-        this.isPayed = isPayed;
-    }
-
-    public void addItem(Item item){
-        itemList.add(item);
-        item.setOrder(this);
-    }
-
-    public void removeItem(Item item){
-        itemList.remove(item);
-        item.setOrder(null);
-    }
 }

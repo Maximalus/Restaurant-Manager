@@ -4,16 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 @Entity
 @Table(name="ingredients")
 public class Ingredient {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_generator")
+    @SequenceGenerator(allocationSize = 1, name = "ingredient_generator")
     private Long id;
 
     @Column(nullable = false)
@@ -33,13 +30,4 @@ public class Ingredient {
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private IngredientGroup ingredientGroup;
-
-    public Ingredient(String nameOfIngredient, double currentAmountOfIngredient, double orderedAmountOfIngredient, double costPerUnit, double totalPrice, IngredientGroup ingredientGroup) {
-        this.nameOfIngredient = nameOfIngredient;
-        this.currentAmountOfIngredient = currentAmountOfIngredient;
-        this.orderedAmountOfIngredient = orderedAmountOfIngredient;
-        this.costPerUnit = costPerUnit;
-        this.totalPrice = totalPrice;
-        this.ingredientGroup = ingredientGroup;
-    }
 }
