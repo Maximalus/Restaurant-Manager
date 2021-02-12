@@ -1,6 +1,8 @@
 package com.maximalus.controler;
 
 import com.maximalus.model.User;
+import com.maximalus.service.RoleService;
+
 import com.maximalus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,12 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
-    private final UserService userService;
-
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
+    @Autowired
+    private RoleService roleService;
+
 
     @GetMapping("/registration")
     public String showRegistrationForm(User user){
@@ -65,7 +66,7 @@ public class UserController {
     @GetMapping(value = {"editUser", "/editUser/{id}"})
     public String editUser(Model model, @PathVariable("id") Long id){
         model.addAttribute("user", userService.getOne(id));
-        model.addAttribute("roles", UserRole.values());
+        model.addAttribute("roles", roleService.findAll());
         return "admin/manage/editUser";
     }
 

@@ -46,4 +46,17 @@ public class User {
 
     @OneToMany(cascade = CascadeType.MERGE)
     private List<Order> orderList = new ArrayList<>();
+
+    public User(){
+
+    }
+
+    public User(User user) {
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.email = user.email;
+        this.password = user.password;
+        this.passwordConfirm = user.passwordConfirm;
+        this.role = user.role;
+    }
 }

@@ -25,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = Optional.ofNullable(userRepository.findByEmail(username)).orElse(null);
         if(user!=null){
-            return new CustomUserDetails(user, Collections.singletonList(user.getUserRole().toString()));
+            return new CustomUserDetails(user, Collections.singletonList(user.getRole().getName()));
         }
         throw new UsernameNotFoundException("No user present with username:" + username);
     }
