@@ -28,7 +28,7 @@ public class IngredientService {
         return ingredientRepository.save(ingredient);
     }
 
-    public void delete(Long id){
+    public void deleteById(Long id){
         ingredientRepository.deleteById(id);
     }
 

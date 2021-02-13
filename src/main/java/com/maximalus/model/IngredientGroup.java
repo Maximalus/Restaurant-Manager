@@ -16,19 +16,19 @@ public class IngredientGroup {
     private Long id;
 
     @Column(nullable = false)
-    private String nameOfIngredientGroup;
+    private String name;
 
     @Setter(AccessLevel.PRIVATE)
-    @OneToMany(mappedBy = "ingredientGroup", orphanRemoval = true)
-    private List<Ingredient> ingredientList = new ArrayList<>();
+    @OneToMany(mappedBy = "ingredientGroup", cascade = CascadeType.MERGE, orphanRemoval = true)
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     public void addIngredient(Ingredient ingredient){
-        ingredientList.add(ingredient);
+        ingredients.add(ingredient);
         ingredient.setIngredientGroup(this);
     }
 
     public void removeIngredient(Ingredient ingredient){
-        ingredientList.remove(ingredient);
+        ingredients.remove(ingredient);
         ingredient.setIngredientGroup(null);
     }
 

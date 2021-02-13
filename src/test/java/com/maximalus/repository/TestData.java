@@ -1,6 +1,7 @@
 package com.maximalus.repository;
 
 import com.maximalus.model.Ingredient;
+import com.maximalus.model.IngredientGroup;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -8,6 +9,37 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestData {
+    public static IngredientGroup getIngredientGroup(){
+        IngredientGroup ingredientGroup = new IngredientGroup();
+        ingredientGroup.setId(4L);
+        ingredientGroup.setName("Juices");
+//        getListOfIngredients().forEach(ingredientGroup::addIngredient);
+        return ingredientGroup;
+    }
+
+    public static IngredientGroup getIngredientGroupForUpdate(){
+        IngredientGroup ingredientGroup = new IngredientGroup();
+        ingredientGroup.setId(2L);
+        ingredientGroup.setName("Oil");
+        return ingredientGroup;
+    }
+
+    public static List<IngredientGroup> getListOfIngredientGroups(){
+        IngredientGroup ingredientGroup = new IngredientGroup();
+        ingredientGroup.setId(1L);
+        ingredientGroup.setName("Milk");
+
+        IngredientGroup ingredientGroup2 = new IngredientGroup();
+        ingredientGroup2.setId(2L);
+        ingredientGroup2.setName("Water");
+
+        IngredientGroup ingredientGroup3 = new IngredientGroup();
+        ingredientGroup3.setId(3L);
+        ingredientGroup3.setName("Spices");
+
+        return Stream.of(ingredientGroup, ingredientGroup2, ingredientGroup3).collect(Collectors.toList());
+    }
+
     public static Ingredient getIngredient(){
         Ingredient ingredient = new Ingredient();
         ingredient.setId(6L);
@@ -16,6 +48,7 @@ public class TestData {
         ingredient.setInitialQuantity(2000);
         ingredient.setCurrentQuantity(1980);
         ingredient.setTotalPrice(BigDecimal.valueOf(24000.00).setScale(2));
+        ingredient.setIngredientGroup(getIngredientGroup());
         return ingredient;
     }
 
@@ -27,6 +60,7 @@ public class TestData {
         ingredient.setInitialQuantity(2000);
         ingredient.setCurrentQuantity(1980);
         ingredient.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
+        ingredient.setIngredientGroup(getIngredientGroup());
         return ingredient;
     }
 
@@ -38,6 +72,7 @@ public class TestData {
         ingredient.setInitialQuantity(2000);
         ingredient.setCurrentQuantity(1980);
         ingredient.setTotalPrice(BigDecimal.valueOf(24000.00).setScale(2));
+        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient2 = new Ingredient();
         ingredient2.setId(2L);
@@ -46,6 +81,7 @@ public class TestData {
         ingredient2.setInitialQuantity(2000);
         ingredient2.setCurrentQuantity(1980);
         ingredient2.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
+        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient3 = new Ingredient();
         ingredient3.setId(3L);
@@ -54,6 +90,7 @@ public class TestData {
         ingredient3.setInitialQuantity(2000);
         ingredient3.setCurrentQuantity(1980);
         ingredient3.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
+        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient4 = new Ingredient();
         ingredient4.setId(4L);
@@ -62,6 +99,7 @@ public class TestData {
         ingredient4.setInitialQuantity(2000);
         ingredient4.setCurrentQuantity(1980);
         ingredient4.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
+        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient5 = new Ingredient();
         ingredient5.setId(5L);
@@ -70,8 +108,11 @@ public class TestData {
         ingredient5.setInitialQuantity(2000);
         ingredient5.setCurrentQuantity(1980);
         ingredient5.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
+        ingredient.setIngredientGroup(getIngredientGroup());
 
         return Stream.of(ingredient, ingredient2,
                 ingredient3, ingredient4, ingredient5).collect(Collectors.toList());
     }
+
+
 }
