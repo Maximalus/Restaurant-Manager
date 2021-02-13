@@ -44,7 +44,7 @@ public class IngredientGroupRepositoryIntegrationTest {
 
     @Test
     @Order(2)
-    public void testCreateIngredient(){
+    public void testCreateIngredientGroups(){
         IngredientGroup actualIngredientGroup = getIngredientGroup();
         IngredientGroup expectedIngredientGroup = ingredientGroupRepository.save(actualIngredientGroup);
 
@@ -53,7 +53,7 @@ public class IngredientGroupRepositoryIntegrationTest {
 
     @Test
     @Order(3)
-    public void testFindByIdIngredient(){
+    public void testFindByIdIngredientGroup(){
         IngredientGroup actualIngredientGroup = getIngredientGroup();
         IngredientGroup expectedIngredientGroup = ingredientGroupRepository.findById(actualIngredientGroup.getId()).orElseThrow();
 
@@ -62,7 +62,7 @@ public class IngredientGroupRepositoryIntegrationTest {
 
     @Test
     @Order(4)
-    public void testUpdateIngredient(){
+    public void testUpdateIngredientGroup(){
         IngredientGroup expectedIngredientGroup = getIngredientGroupForUpdate();
         IngredientGroup actualIngredientGroup = ingredientGroupRepository.save(expectedIngredientGroup);
 
@@ -71,7 +71,7 @@ public class IngredientGroupRepositoryIntegrationTest {
 
     @Test
     @Order(5)
-    public void testDeleteIngredient(){
+    public void testDeleteIngredientGroup(){
         Long id = getIngredientGroup().getId();
         ingredientGroupRepository.deleteById(id);
 
