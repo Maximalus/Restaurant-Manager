@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="uk" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Головна сторінка</title>
 </head>
 <body>
     <div sec:authorize="isAuthenticated()">
-        Вітаємо <span sec:authentication="name">Username</span><br>
+        <h1>Вітаємо <span sec:authentication="name"> Username </span></h1><br>
         <a th:href="@{/logout}">Вихід з системи</a>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_ADMINISTRATOR')">
+        <h3>АДМІНІСТРАТОР</h3>
     </div>
 </body>
 </html>

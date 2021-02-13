@@ -15,7 +15,7 @@
         <tr>
             <td>Роль користувача: </td>
             <td>
-                <select th:field="${user.userRole}">
+                <select th:field="${user.role}">
                     <option value="">--</option>
                     <option th:each="role:${roles}"
                             th:value="${role}"

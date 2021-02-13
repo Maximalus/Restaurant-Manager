@@ -12,7 +12,9 @@
                 <th>Ід</th>
                 <th>Прізвище</th>
                 <th>Ім'я</th>
+                <th>Ресторан</th>
                 <th>Роль</th>
+                <th>Заклад</th>
                 <th>Змінити</th>
                 <th>Видалити</th>
             </tr>
@@ -22,7 +24,8 @@
                 <td th:text="${user.id}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.firstName}"></td>
-                <td th:text="${user.userRole}"></td>
+                <td th:text="${user.role}"></td>
+                <td th:text="${user.outlet}"></td>
                 <td><a th:href="@{editUser(id=${user.id})}">Змінити</a></td>
                 <td> <a th:href="@{deleteUser(id=${user.id})}">Видалити</a></td>
             </tr>

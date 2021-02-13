@@ -12,14 +12,12 @@ import java.util.List;
 @Service
 @Transactional
 public class UserService {
-    private final UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
-
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private RoleService roleService;
 
     public void save(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -32,14 +30,14 @@ public class UserService {
     }
 
     public User findByEmail(String username){
-        return userRepository.findByEmail(username);
+        return userRepository.findByEmail(username).orElseThrow();
     }
 
-    public List<User> getAll(){
+    public List<User> findAll(){
         return (List<User>) userRepository.findAll();
     }
 
-    public User getOne(Long id){
+    public User findById(Long id){
         return userRepository.findById(id).orElseThrow();
     }
 

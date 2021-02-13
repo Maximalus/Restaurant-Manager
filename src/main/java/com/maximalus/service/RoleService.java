@@ -12,6 +12,10 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
+    public Role findByName(String name){
+        return roleRepository.findByName(name);
+    }
+
     public List<Role> findAll(){
         return (List<Role>) roleRepository.findAll();
     }
