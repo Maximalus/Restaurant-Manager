@@ -24,13 +24,14 @@ public class Ingredient {
     @Column(nullable = false)
     private int initialQuantity;
 
+    @Column(precision = 10, scale = 2)
     private BigDecimal totalPrice;
 
-    private LocalDate creationDate = LocalDate.now();
+    private LocalDate creationDate;
 
     private LocalDate changingDate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal costPerUnit;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
