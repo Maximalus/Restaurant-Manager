@@ -16,7 +16,7 @@ public class Outlet {
     private Long id;
 
     @Column(nullable = false)
-    private String nameOfOutlet;
+    private String name;
 
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

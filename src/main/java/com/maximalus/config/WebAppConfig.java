@@ -21,10 +21,15 @@ public class WebAppConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/index").setViewName("index");
 
-        registry.addViewController("/admin/").setViewName("admin/admin");
-        registry.addViewController("/admin/manage/users").setViewName("admin/manage/users");
-        registry.addViewController("/admin/manage/editUser").setViewName("admin/manage/editUser");
-        registry.addViewController("/admin/manage/deleteUser").setViewName("/admin/manage/deleteUser");
+        registry.addViewController("/admin").setViewName("admin/admin");
+        registry.addViewController("/admin/allUsers").setViewName("admin/manage/user/allUsers");
+        registry.addViewController("/admin/editUser").setViewName("admin/manage/user/editUser");
+
+        registry.addViewController("/admin/allIngredients")
+                .setViewName("admin/manage/ingredient/allIngredients");
+        registry.addViewController("/admin/editIngredient")
+                .setViewName("admin/manage/ingredient/editIngredient");
+
 
         registry.addViewController("/403").setViewName("403");
         registry.addViewController("/logout").setViewName("login");
