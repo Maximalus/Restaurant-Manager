@@ -19,7 +19,7 @@ public class IngredientGroup {
     private String name;
 
     @Setter(AccessLevel.PRIVATE)
-    @OneToMany(mappedBy = "ingredientGroup", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @OneToMany(mappedBy = "ingredientGroup", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients = new ArrayList<>();
 
     public void addIngredient(Ingredient ingredient){

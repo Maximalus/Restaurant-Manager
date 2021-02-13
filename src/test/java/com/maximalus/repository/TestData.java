@@ -13,7 +13,6 @@ public class TestData {
         IngredientGroup ingredientGroup = new IngredientGroup();
         ingredientGroup.setId(4L);
         ingredientGroup.setName("Juices");
-//        getListOfIngredients().forEach(ingredientGroup::addIngredient);
         return ingredientGroup;
     }
 
@@ -48,7 +47,6 @@ public class TestData {
         ingredient.setInitialQuantity(2000);
         ingredient.setCurrentQuantity(1980);
         ingredient.setTotalPrice(BigDecimal.valueOf(24000.00).setScale(2));
-        ingredient.setIngredientGroup(getIngredientGroup());
         return ingredient;
     }
 
@@ -60,7 +58,6 @@ public class TestData {
         ingredient.setInitialQuantity(2000);
         ingredient.setCurrentQuantity(1980);
         ingredient.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
-        ingredient.setIngredientGroup(getIngredientGroup());
         return ingredient;
     }
 
@@ -72,7 +69,6 @@ public class TestData {
         ingredient.setInitialQuantity(2000);
         ingredient.setCurrentQuantity(1980);
         ingredient.setTotalPrice(BigDecimal.valueOf(24000.00).setScale(2));
-        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient2 = new Ingredient();
         ingredient2.setId(2L);
@@ -81,7 +77,6 @@ public class TestData {
         ingredient2.setInitialQuantity(2000);
         ingredient2.setCurrentQuantity(1980);
         ingredient2.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
-        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient3 = new Ingredient();
         ingredient3.setId(3L);
@@ -90,7 +85,6 @@ public class TestData {
         ingredient3.setInitialQuantity(2000);
         ingredient3.setCurrentQuantity(1980);
         ingredient3.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
-        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient4 = new Ingredient();
         ingredient4.setId(4L);
@@ -99,7 +93,6 @@ public class TestData {
         ingredient4.setInitialQuantity(2000);
         ingredient4.setCurrentQuantity(1980);
         ingredient4.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
-        ingredient.setIngredientGroup(getIngredientGroup());
 
         Ingredient ingredient5 = new Ingredient();
         ingredient5.setId(5L);
@@ -108,11 +101,8 @@ public class TestData {
         ingredient5.setInitialQuantity(2000);
         ingredient5.setCurrentQuantity(1980);
         ingredient5.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
-        ingredient.setIngredientGroup(getIngredientGroup());
 
         return Stream.of(ingredient, ingredient2,
                 ingredient3, ingredient4, ingredient5).collect(Collectors.toList());
     }
-
-
 }
