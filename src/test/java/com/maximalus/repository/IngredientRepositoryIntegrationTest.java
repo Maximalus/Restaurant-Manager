@@ -45,19 +45,19 @@ public class IngredientRepositoryIntegrationTest {
     @Test
     @Order(2)
     public void testCreateIngredient(){
-        Ingredient newIngredient = getIngredient();
-        Ingredient savedIngredient = ingredientRepository.save(newIngredient);
+        Ingredient actualIngredient = getIngredient();
+        Ingredient expectedIngredient = ingredientRepository.save(actualIngredient);
 
-        assertEquals(savedIngredient, newIngredient);
+        assertEquals(expectedIngredient, actualIngredient);
     }
 
     @Test
     @Order(3)
     public void testFindByIdIngredient(){
-        Ingredient newIngredient = getIngredient();
-        Ingredient foundIngredient = ingredientRepository.findById(newIngredient.getId()).orElseThrow();
+        Ingredient actualIngredient = getIngredient();
+        Ingredient expectedIngredient = ingredientRepository.findById(actualIngredient.getId()).orElseThrow();
 
-        assertEquals(foundIngredient, newIngredient);
+        assertEquals(expectedIngredient, actualIngredient);
     }
 
     @Test

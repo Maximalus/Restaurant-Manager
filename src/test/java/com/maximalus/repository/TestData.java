@@ -1,6 +1,7 @@
 package com.maximalus.repository;
 
 import com.maximalus.model.Ingredient;
+import com.maximalus.model.IngredientGroup;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -8,6 +9,36 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestData {
+    public static IngredientGroup getIngredientGroup(){
+        IngredientGroup ingredientGroup = new IngredientGroup();
+        ingredientGroup.setId(4L);
+        ingredientGroup.setName("Juices");
+        return ingredientGroup;
+    }
+
+    public static IngredientGroup getIngredientGroupForUpdate(){
+        IngredientGroup ingredientGroup = new IngredientGroup();
+        ingredientGroup.setId(2L);
+        ingredientGroup.setName("Oil");
+        return ingredientGroup;
+    }
+
+    public static List<IngredientGroup> getListOfIngredientGroups(){
+        IngredientGroup ingredientGroup = new IngredientGroup();
+        ingredientGroup.setId(1L);
+        ingredientGroup.setName("Milk");
+
+        IngredientGroup ingredientGroup2 = new IngredientGroup();
+        ingredientGroup2.setId(2L);
+        ingredientGroup2.setName("Water");
+
+        IngredientGroup ingredientGroup3 = new IngredientGroup();
+        ingredientGroup3.setId(3L);
+        ingredientGroup3.setName("Spices");
+
+        return Stream.of(ingredientGroup, ingredientGroup2, ingredientGroup3).collect(Collectors.toList());
+    }
+
     public static Ingredient getIngredient(){
         Ingredient ingredient = new Ingredient();
         ingredient.setId(6L);
