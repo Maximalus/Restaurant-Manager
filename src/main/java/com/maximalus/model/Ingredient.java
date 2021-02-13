@@ -34,6 +34,14 @@ public class Ingredient {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal costPerUnit;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     private IngredientGroup ingredientGroup;
+
+    public void setIngredientGroup(IngredientGroup ingredientGroup){
+        ingredientGroup.addIngredient(this);
+    }
+
+    public void removeIngredientGroup(IngredientGroup ingredientGroup){
+        ingredientGroup.removeIngredient(this);
+    }
 }
