@@ -10,9 +10,9 @@ public class UserDtoConverter {
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
         userDto.setEmail(user.getEmail());
-        userDto.setOutlet("Mocarabia");
+        userDto.setOutlet(user.getOutlet().getName());
         userDto.setRole(user.getRole().getName());
-
+        System.out.println(userDto.toString());
         return userDto;
     }
 }

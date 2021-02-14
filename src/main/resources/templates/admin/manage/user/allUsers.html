@@ -6,6 +6,10 @@
     <title>Управління користувачами</title>
 </head>
 <body>
+    <div id="identification_block" sec:authorize="isAuthenticated()">
+        <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
+        <a th:href="@{/logout}">Вихід з системи</a>
+    </div><br>
     <table>
         <thead>
             <tr>
@@ -14,20 +18,19 @@
                 <th>Ім'я</th>
                 <th>Ресторан</th>
                 <th>Роль</th>
-                <th>Заклад</th>
-                <th>Змінити</th>
-                <th>Видалити</th>
+                <th sec:authorize="hasAuthority('ADMIN-WRITE')">Змінити</th>
+                <th sec:authorize="hasAuthority('ADMIN-WRITE')">Видалити</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="user:${users}">
+            <tr th:each="user:${users}" th:cellpadding="6">
                 <td th:text="${user.id}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.firstName}"></td>
-                <td th:text="${user.role}"></td>
                 <td th:text="${user.outlet}"></td>
-                <td><a th:href="@{editUser(id=${user.id})}">Змінити</a></td>
-                <td> <a th:href="@{deleteUser(id=${user.id})}">Видалити</a></td>
+                <td th:text="${user.role}"></td>
+                <td><a th:href="@{editUser(id=${user.id})}" sec:authorize="hasAuthority('ADMIN-WRITE')">Змінити</a></td>
+                <td> <a th:href="@{deleteUser(id=${user.id})}" sec:authorize="hasAuthority('ADMIN-WRITE')">Видалити</a></td>
             </tr>
         </tbody>
     </table>

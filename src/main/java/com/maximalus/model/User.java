@@ -38,10 +38,10 @@ public class User {
     @Column(nullable = false)
     private String passwordConfirm;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Role role;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Outlet outlet;
 
     @OneToMany(cascade = CascadeType.MERGE)

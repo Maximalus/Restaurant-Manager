@@ -14,4 +14,5 @@ public interface OutletRepository extends CrudRepository<Outlet, Long> {
 //    @Query("select orderList from Outlet outlet join fetch outlet.orderList orderList where outlet.id=:id")
 //    List<Order> getAllOrdersByIdOfOutlet(long id);
     List<Order> getAllById(Long id);
+    Outlet findByName(String name);
 }
