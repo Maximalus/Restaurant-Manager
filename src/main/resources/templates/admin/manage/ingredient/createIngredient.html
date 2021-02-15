@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Створити новий інгредієнт</title>
+</head>
+
+<body>
+    <div id="identification_block" sec:authorize="isAuthenticated()">
+        <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
+        <a th:href="@{/logout}">Вихід з системи</a>
+    </div><br>
+<form th:action="@{/admin/createIngredient}" th:object="${ingredientDto}" th:method="post">
+    <label>Назва інгредієнта</label>
+    <input th:type="text" th:field="${ingredientDto.name}"><br>
+
+     <label>Ціна ща одиницю товару</label>
+     <input th:type="number" th:field="${ingredientDto.costPerUnit}"><br>
+
+     <label>Одиниця вимірювання товару</label>
+     <input th:type="text" th:field="${ingredientDto.nameOfUnit}"><br>
+
+    <table>
+            <tr>
+                <td>Заклад: </td>
+                <td>
+                    <select th:field="${ingredientDto.ingredientGroupName}">
+                        <option value="">--</option>
+                        <option th:each="ingredientGroup:${ingredientGroups}"
+                                th:field="${ingredientDto.ingredientGroup}"
+                                th:text="${ingredientGroup}"></option>
+                    </select>
+                </td>
+            </tr>
+        </table><br>
+
+
+    <input th:type="submit" th:value="Підтвердити">
+</form>
+</body>
+
+</html>

@@ -25,7 +25,8 @@
             </ul>
             <ul><h3>Інгредієнти та групи інгредієнтів</h3>
                 <li>
-                    <a sec:authorize="hasAuthority('ADMIN-WRITE')">Новий інгредієнт</a>
+                    <a th:href="@{/admin/createIngredient}"
+                       sec:authorize="hasAuthority('ADMIN-WRITE')">Новий інгредієнт</a>
                 </li>
                 <li>
                     <a sec:authorize="hasAuthority('ADMIN-READ')">Список інгредієнтів</a>

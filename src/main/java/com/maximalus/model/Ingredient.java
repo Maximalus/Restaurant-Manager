@@ -24,6 +24,9 @@ public class Ingredient {
     @Column(nullable = false)
     private int initialQuantity;
 
+    @Column(nullable = false)
+    private String unitName;
+
     @Column(precision = 10, scale = 2)
     private BigDecimal totalPrice;
 

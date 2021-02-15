@@ -20,6 +20,10 @@ public class IngredientGroupService {
         return ingredientGroupRepository.findById(id).orElseThrow();
     }
 
+    public IngredientGroup findByName(String name){
+        return ingredientGroupRepository.findByName(name);
+    }
+
     public List<IngredientGroup> findAll(){
         return (List<IngredientGroup>) ingredientGroupRepository.findAll();
     }
