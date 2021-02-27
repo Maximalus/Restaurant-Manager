@@ -37,7 +37,9 @@ public class UserController {
     public String getManageUsersPage(Model model){
         List<UserDto> userDtoList =
                 userServiceImpl.findAll()
-                        .stream().map(UserDtoConverter::toDto).collect(Collectors.toList());
+                        .stream()
+                        .filter(user -> !user.equals(getAuthenticatedUser()))
+                        .map(UserDtoConverter::toDto).collect(Collectors.toList());
         model.addAttribute("users", userDtoList);
         return "admin/manage/user/allUsers";
     }
@@ -80,7 +82,11 @@ public class UserController {
     }
 
     private User getAuthenticatedUser(){
-        StringBuffer stringBuffer = new StringBuffer();
-        return (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        org.springframework.security.core.userdetails.User user =
+                (org.springframework.security.core.userdetails.User)
+                        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = user.getUsername();
+        User authorizedUser = userServiceImpl.findByEmail(username);
+        return authorizedUser;
     }
 }
