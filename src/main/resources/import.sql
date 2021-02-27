@@ -29,6 +29,7 @@ INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'MANAGER');
 INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'CASHIER');
 INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'CAPTAIN');
 INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'WAITER');
+INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'DEFAULT');
 
 DELETE FROM permissions;
 ALTER SEQUENCE permission_generator RESTART;

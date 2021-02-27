@@ -4,7 +4,6 @@ import com.maximalus.model.User;
 import com.maximalus.repository.UserRepository;
 import com.maximalus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,18 +14,13 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private RoleServiceImpl roleServiceImpl;
 
-    public void save(User user){
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setPassword(passwordEncoder.encode(user.getPasswordConfirm()));
+    public void update(User user){
         userRepository.save(user);
     }
 
-    public void update(User user){
+    @Override
+    public void save(User user) {
         userRepository.save(user);
     }
 
