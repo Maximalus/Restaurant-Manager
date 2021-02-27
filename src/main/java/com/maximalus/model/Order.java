@@ -35,7 +35,10 @@ public class Order {
     private int numberOfTable;
 
     @Column(nullable = false)
-    private LocalDateTime creationDate = LocalDateTime.now();
+    private LocalDateTime creationDate;
+
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
 
     @EqualsAndHashCode.Exclude
     @OneToOne

@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 @Data
 @Embeddable
@@ -17,4 +18,11 @@ public class Recipe {
 
     @Column(nullable = false)
     private boolean isDeleted;
+
+    @Column(nullable = false)
+    private LocalDateTime creationDate;
+
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
+
 }
