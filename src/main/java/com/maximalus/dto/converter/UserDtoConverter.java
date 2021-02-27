@@ -9,10 +9,14 @@ public class UserDtoConverter {
         userDto.setId(user.getId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
-        userDto.setEmail(user.getEmail());
         userDto.setOutlet(user.getOutlet().getName());
-        userDto.setRole(user.getRole().getName());
-        System.out.println(userDto.toString());
         return userDto;
+    }
+
+    public static User fromDto(UserDto userDto){
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        return user;
     }
 }

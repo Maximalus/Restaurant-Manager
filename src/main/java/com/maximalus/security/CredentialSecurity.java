@@ -1,6 +1,6 @@
 package com.maximalus.security;
 
-import com.maximalus.model.User;
+import com.maximalus.model.Credential;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,14 +10,14 @@ import java.util.Collection;
 import java.util.List;
 
 @Data
-public class UserSecurity implements UserDetails {
+public class CredentialSecurity implements UserDetails {
     private final String username;
     private final String password;
     private final List<SimpleGrantedAuthority> authorities;
     private final boolean isActive;
 
-    public UserSecurity(String username, String password,
-                        List<SimpleGrantedAuthority> authorities, boolean isActive) {
+    public CredentialSecurity(String username, String password,
+                              List<SimpleGrantedAuthority> authorities, boolean isActive) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;
@@ -59,11 +59,11 @@ public class UserSecurity implements UserDetails {
         return isActive;
     }
 
-    public static UserDetails fromUser(User user){
-        return new org.springframework.security.core.userdetails.User(user.getEmail(),
-                user.getPassword(),
+    public static UserDetails fromUser(Credential credential){
+        return new org.springframework.security.core.userdetails.User(credential.getUsername(),
+                credential.getPassword(),
                 true, true,
                 true, true,
-                user.getRole().getAuthorities());
+                credential.getRole().getAuthorities());
     }
 }
