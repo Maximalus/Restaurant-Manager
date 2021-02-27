@@ -1,15 +1,11 @@
-package com.maximalus.model;
+package com.maximalus.model.report;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 @Data
 @Entity
@@ -22,11 +18,11 @@ public class SalesReport extends Report{
     private int numberOfPaidOrders;
 
     @Column(nullable = false)
-    private double totalSales;
+    private BigDecimal totalSales;
 
     @Column(nullable = false)
-    private double costOfIngredients;
+    private BigDecimal costOfIngredients;
 
     @Column(nullable = false)
-    private double totalRevenue;
+    private BigDecimal totalRevenue;
 }

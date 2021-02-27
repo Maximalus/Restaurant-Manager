@@ -1,5 +1,6 @@
-package com.maximalus.model;
+package com.maximalus.model.report;
 
+import com.maximalus.model.Outlet;
 import lombok.*;
 
 import javax.persistence.*;

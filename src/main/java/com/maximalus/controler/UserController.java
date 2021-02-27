@@ -5,9 +5,9 @@ import com.maximalus.dto.converter.UserDtoConverter;
 import com.maximalus.model.Outlet;
 import com.maximalus.model.Role;
 import com.maximalus.model.User;
-import com.maximalus.service.OutletService;
-import com.maximalus.service.RoleService;
-import com.maximalus.service.UserService;
+import com.maximalus.service.impl.OutletServiceImpl;
+import com.maximalus.service.impl.RoleServiceImpl;
+import com.maximalus.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,11 +22,11 @@ import java.util.stream.Collectors;
 @Controller
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
     @Autowired
-    private RoleService roleService;
+    private RoleServiceImpl roleServiceImpl;
     @Autowired
-    private OutletService outletService;
+    private OutletServiceImpl outletServiceImpl;
 
     @GetMapping("/admin/admin")
     public String getAdminPage(){
@@ -36,7 +36,7 @@ public class UserController {
     @GetMapping("/admin/allUsers")
     public String getManageUsersPage(Model model){
         List<UserDto> userDtoList =
-                userService.findAll()
+                userServiceImpl.findAll()
                         .stream().map(UserDtoConverter::toDto).collect(Collectors.toList());
         model.addAttribute("users", userDtoList);
         return "admin/manage/user/allUsers";
@@ -45,10 +45,10 @@ public class UserController {
     @GetMapping(value = "/admin/editUser")
     public String editUser(Model model, @RequestParam String id){
         Long userId = Long.parseLong(id);
-        User user = userService.findById(userId);
+        User user = userServiceImpl.findById(userId);
         UserDto userDto = UserDtoConverter.toDto(user);
-        List<String> roleList = roleService.findAll().stream().map(Role::getName).collect(Collectors.toList());
-        List<String> outletList = outletService.findAll().stream().map(Outlet::getName).collect(Collectors.toList());
+        List<String> roleList = roleServiceImpl.findAll().stream().map(Role::getName).collect(Collectors.toList());
+        List<String> outletList = outletServiceImpl.findAll().stream().map(Outlet::getName).collect(Collectors.toList());
         model.addAttribute("userDto", userDto);
         model.addAttribute("roles", roleList);
         model.addAttribute("outlets", outletList);
@@ -61,21 +61,21 @@ public class UserController {
                                         @RequestParam String lastName,
                                         @RequestParam String role,
                                         @RequestParam String outlet){
-        User user = userService.findById(Long.parseLong(id));
+        User user = userServiceImpl.findById(Long.parseLong(id));
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        Role foundRole = roleService.findByName(role);
-        Outlet foundOutlet = outletService.findByName(outlet);
+        Role foundRole = roleServiceImpl.findByName(role);
+        Outlet foundOutlet = outletServiceImpl.findByName(outlet);
         user.setRole(foundRole);
         user.setOutlet(foundOutlet);
-        userService.update(user);
+        userServiceImpl.update(user);
         return "admin/admin";
     }
 
     @GetMapping(value = "/admin/deleteUser")
     public String deleteUser(@RequestParam("id") String id){
         Long userId = Long.parseLong(id);
-        userService.deleteById(userId);
+        userServiceImpl.deleteById(userId);
         return "admin/manage/user/allUsers";
     }
 

@@ -1,7 +1,7 @@
 package com.maximalus.controler;
 
 import com.maximalus.model.User;
-import com.maximalus.service.UserService;
+import com.maximalus.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AuthController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @GetMapping("/registration")
     public String showRegistrationForm(User user){
@@ -20,7 +20,7 @@ public class AuthController {
 
     @PostMapping("/registration")
     public String saveUser(User user){
-        userService.save(user);
+        userServiceImpl.save(user);
         return "login";
     }
 

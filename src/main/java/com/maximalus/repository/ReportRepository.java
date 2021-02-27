@@ -1,6 +1,6 @@
 package com.maximalus.repository;
 
-import com.maximalus.model.Report;
+import com.maximalus.model.report.Report;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,6 @@
 package com.maximalus.model;
 
+import com.maximalus.model.discount.ProductDiscount;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
