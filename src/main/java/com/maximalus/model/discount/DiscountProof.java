@@ -1,5 +1,6 @@
-package com.maximalus.model;
+package com.maximalus.model.discount;
 
+import com.maximalus.model.Order;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;

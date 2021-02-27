@@ -3,8 +3,8 @@ package com.maximalus.controler;
 import com.maximalus.dto.IngredientDto;
 import com.maximalus.model.Ingredient;
 import com.maximalus.model.IngredientGroup;
-import com.maximalus.service.IngredientGroupService;
-import com.maximalus.service.IngredientService;
+import com.maximalus.service.impl.IngredientGroupServiceImpl;
+import com.maximalus.service.impl.IngredientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,14 +22,14 @@ import java.util.stream.Collectors;
 @RequestMapping("admin/manage/ingredient")
 public class IngredientController {
     @Autowired
-    private IngredientService ingredientService;
+    private IngredientServiceImpl ingredientServiceImpl;
     @Autowired
-    public IngredientGroupService ingredientGroupService;
+    public IngredientGroupServiceImpl ingredientGroupServiceImpl;
 
     @GetMapping(value = "admin/createIngredient")
     public String getCreateIngredientPage(Model model){
         model.addAttribute("ingredientDto", new IngredientDto());
-        List<String> ingredientGroups = ingredientGroupService.findAll().stream()
+        List<String> ingredientGroups = ingredientGroupServiceImpl.findAll().stream()
                 .map(IngredientGroup::getName).collect(Collectors.toList());
         model.addAttribute("ingredientGroups", ingredientGroups);
         return "admin/manage/ingredient/createIngredient";
@@ -46,9 +46,9 @@ public class IngredientController {
         ingredient.setCurrentQuantity(0);
         ingredient.setInitialQuantity(0);
         ingredient.setUnitName(nameOfUnit);
-        IngredientGroup ingredientGroup = ingredientGroupService.findByName(ingredientGroupName);
+        IngredientGroup ingredientGroup = ingredientGroupServiceImpl.findByName(ingredientGroupName);
         ingredientGroup.addIngredient(ingredient);
-        ingredientService.save(ingredient);
+        ingredientServiceImpl.save(ingredient);
         return "admin/admin";
     }
 }

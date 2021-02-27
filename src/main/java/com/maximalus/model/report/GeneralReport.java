@@ -1,15 +1,10 @@
-package com.maximalus.model;
+package com.maximalus.model.report;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
 
 @Data
 @Entity

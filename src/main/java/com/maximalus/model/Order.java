@@ -1,5 +1,7 @@
 package com.maximalus.model;
 
+import com.maximalus.model.discount.CompanyDiscount;
+import com.maximalus.model.discount.DiscountProof;
 import lombok.*;
 
 import javax.persistence.*;
