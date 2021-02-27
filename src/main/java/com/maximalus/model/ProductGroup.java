@@ -3,6 +3,7 @@ package com.maximalus.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,4 +26,11 @@ public class ProductGroup {
 
     @Column(nullable = false)
     private boolean isDeleted;
+
+    @Column(nullable = false)
+    private LocalDateTime creationDate;
+
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
+
 }
