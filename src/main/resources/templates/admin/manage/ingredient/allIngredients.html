@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Управління користувачами</title>
+</head>
+<body>
+<div id="identification_block" sec:authorize="isAuthenticated()">
+    <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
+    <a th:href="@{/logout}">Вихід з системи</a>
+</div><br>
+<table>
+    <thead>
+    <tr>
+        <th>Ід</th>
+        <th>Назва інгредієнта</th>
+        <th>Ціна за одиницю</th>
+        <th>Замовлена кількість</th>
+        <th>Кількість на даний момент</th>
+        <th>Загальна вартість</th>
+        <th>Назва одиниці вимірювання</th>
+        <th>Група інгредієнтів</th>
+        <th>Дата створення</th>
+        <th>Дата зміни</th>
+        <th sec:authorize="hasAuthority('ADMIN-WRITE')">Змінити</th>
+        <th sec:authorize="hasAuthority('ADMIN-WRITE')">Видалити</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ingredient:${ingredients}" th:cellpadding="6">
+        <td th:text="${ingredient.id}"></td>
+        <td th:text="${ingredient.name}"></td>
+        <td th:text="${ingredient.costPerUnit}"></td>
+        <td th:text="${ingredient.initialQuantity}"></td>
+        <td th:text="${ingredient.currentQuantity}"></td>
+        <td th:text="${ingredient.totalPrice}"></td>
+        <td th:text="${ingredient.nameOfUnit}"></td>
+        <td th:text="${ingredient.ingredientGroupName}"></td>
+        <td th:text="${ingredient.creationDate}"></td>
+        <td th:text="${ingredient.changingDate}"></td>
+        <td><a th:href="@{editIngredient(id=${ingredient.id})}" sec:authorize="hasAuthority('ADMIN-WRITE')">Змінити</a></td>
+        <td> <a th:href="@{deleteIngredient(id=${ingredient.id})}" sec:authorize="hasAuthority('ADMIN-WRITE')">Видалити</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

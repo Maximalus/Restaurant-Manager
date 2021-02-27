@@ -1,10 +1,19 @@
 package com.maximalus.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -18,11 +27,11 @@ public class Ingredient {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private int currentQuantity;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal currentQuantity;
 
-    @Column(nullable = false)
-    private int initialQuantity;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal initialQuantity;
 
     @Column(nullable = false)
     private String unitName;
@@ -30,25 +39,22 @@ public class Ingredient {
     @Column(precision = 10, scale = 2)
     private BigDecimal totalPrice;
 
-    private LocalDate creationDate;
+    @Column(nullable = false)
+    private LocalDateTime creationDate;
 
-    private LocalDate changingDate;
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
+
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal costPerUnit;
 
     @EqualsAndHashCode.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private IngredientGroup ingredientGroup;
 
     @Column(nullable = false)
     private boolean isDeleted;
 
-    public void setIngredientGroup(IngredientGroup ingredientGroup){
-        ingredientGroup.addIngredient(this);
-    }
 
-    public void removeIngredientGroup(IngredientGroup ingredientGroup){
-        ingredientGroup.removeIngredient(this);
-    }
 }

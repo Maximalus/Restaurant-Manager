@@ -1,16 +1,17 @@
-DELETE FROM ingredients;
-ALTER SEQUENCE ingredient_generator RESTART;
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', 1980, 2000, 24000, 12, 'Liter');
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name) VALUES (nextval('ingredient_generator'), 'Orange juice', 1980, 2000, 24000, 12, 'Liter');
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name) VALUES (nextval('ingredient_generator'), 'Apple juice', 1980, 2000, 24000, 12, 'Liter');
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name) VALUES (nextval('ingredient_generator'), 'Pineapple juice', 1980, 2000, 24000, 12, 'Liter');
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name) VALUES (nextval('ingredient_generator'), 'Mango juice', 1980, 2000, 24000, 12, 'Liter');
-
 DELETE FROM ingredient_groups;
 ALTER SEQUENCE ingredient_group_generator RESTART;
-INSERT INTO ingredient_groups (id, name) VALUES (nextval('ingredient_group_generator'), 'Milk');
-INSERT INTO ingredient_groups (id, name) VALUES (nextval('ingredient_group_generator'), 'Water');
-INSERT INTO ingredient_groups (id, name) VALUES (nextval('ingredient_group_generator'), 'Spices');
+INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Milk', false);
+INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Water', false);
+INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Spices', false);
+INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Juice', false);
+
+DELETE FROM ingredients;
+ALTER SEQUENCE ingredient_generator RESTART;
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Orange juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Apple juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Pineapple juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Mango juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
 
 DELETE FROM outlets;
 ALTER SEQUENCE outlet_generator RESTART;

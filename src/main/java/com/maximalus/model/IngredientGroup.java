@@ -3,6 +3,7 @@ package com.maximalus.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,13 @@ public class IngredientGroup {
 
     @Column(nullable = false)
     private boolean isDeleted;
+
+    @Column(nullable = false)
+    private LocalDateTime creationDate;
+
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
+
 
     public void addIngredient(Ingredient ingredient){
         ingredients.add(ingredient);

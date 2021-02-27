@@ -14,31 +14,32 @@
         <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
         <a th:href="@{/logout}">Вихід з системи</a>
     </div><br>
-<form th:action="@{/admin/createIngredient}" th:object="${ingredientDto}" th:method="post">
-    <label>Назва інгредієнта</label>
-    <input th:type="text" th:value="${ingredientDto.name}"><br>
+<form th:action="@{/admin/createIngredient}" th:object="${ingredientDto}" th:method="post" commandName="createIngredient">
+    <label th:for="name">Назва інгредієнта</label>
+    <input th:type="text" th:field="*{name}" th:id="name" autofocus="autofocus">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br>
 
-     <label>Ціна ща одиницю товару</label>
-     <input th:type="number" th:value="${ingredientDto.costPerUnit}"><br>
+    <label th:for="costPerUnit">Ціна за одиницю товару</label>
+    <input th:type="number" th:field="*{costPerUnit}" th:id="costPerUnit" autofocus="autofocus">
+    <span th:if="${#fields.hasErrors('costPerUnit')}" th:errors="*{costPerUnit}"></span><br>
 
-     <label>Одиниця вимірювання товару</label>
-     <input th:type="text" th:value="${ingredientDto.nameOfUnit}"><br>
+    <label th:for="nameOfUnit">Одиниця вимірювання товару</label>
+    <input th:type="text" th:field="*{nameOfUnit}" th:id="nameOfUnit" autofocus="autofocus">
+    <span th:if="${#fields.hasErrors('nameOfUnit')}" th:errors="*{nameOfUnit}"></span><br>
 
     <table>
             <tr>
-                <td>Заклад: </td>
+                <td>Група інгредієнтів: </td>
                 <td>
                     <select th:field="${ingredientDto.ingredientGroupName}">
                         <option value="">--</option>
                         <option th:each="ingredientGroup:${ingredientGroups}"
-                                th:value="${ingredientDto.ingredientGroup}"
+                                th:value="${ingredientGroup}"
                                 th:text="${ingredientGroup}"></option>
                     </select>
                 </td>
             </tr>
         </table><br>
-
-
     <input th:type="submit" th:value="Підтвердити">
 </form>
 </body>
