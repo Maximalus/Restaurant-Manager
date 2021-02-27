@@ -49,5 +49,8 @@ public class Order {
     private BigDecimal totalCost;
 
     @Column(nullable = false)
-    private boolean isPayed = false;
+    private boolean isPayed;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

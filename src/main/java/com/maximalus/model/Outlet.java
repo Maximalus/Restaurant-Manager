@@ -27,4 +27,7 @@ public class Outlet {
     @Setter(AccessLevel.PRIVATE)
     @OneToMany
     private List<User> userList = new ArrayList<>();
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

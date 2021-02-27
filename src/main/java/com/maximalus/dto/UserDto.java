@@ -9,6 +9,6 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String outlet;
-    private String roleName;
+    private String role;
     private String password;
 }

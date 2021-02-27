@@ -31,4 +31,7 @@ public class Product {
     @EqualsAndHashCode.Exclude
     @ElementCollection
     private List<Recipe> recipeList = new ArrayList<>();
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

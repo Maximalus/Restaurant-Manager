@@ -17,12 +17,12 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "CREDENTIALS")
+@Table(name = "credentials")
 public class Credential {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_generator")
-    @SequenceGenerator(allocationSize = 1, name = "item_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credentials_generator")
+    @SequenceGenerator(allocationSize = 2, name = "credentials_generator")
     private Long id;
 
     @Column(nullable = false)
@@ -34,6 +34,9 @@ public class Credential {
     @EqualsAndHashCode.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     private Role role;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 
     public Credential(String username, String password, Role role) {
         this.username = username;

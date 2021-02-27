@@ -23,6 +23,9 @@ public class IngredientGroup {
     @OneToMany(mappedBy = "ingredientGroup", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients = new ArrayList<>();
 
+    @Column(nullable = false)
+    private boolean isDeleted;
+
     public void addIngredient(Ingredient ingredient){
         ingredients.add(ingredient);
         ingredient.setIngredientGroup(this);

@@ -32,4 +32,7 @@ public class DiscountProof {
     @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "discountProof")
     private Order order;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

@@ -14,12 +14,12 @@ INSERT INTO ingredient_groups (id, name) VALUES (nextval('ingredient_group_gener
 
 DELETE FROM outlets;
 ALTER SEQUENCE outlet_generator RESTART;
-INSERT INTO outlets (id, name) VALUES (nextval('outlet_generator'), 'Crystal');
-INSERT INTO outlets (id, name) VALUES (nextval('outlet_generator'), 'La Spiga');
-INSERT INTO outlets (id, name) VALUES (nextval('outlet_generator'), 'Market');
-INSERT INTO outlets (id, name) VALUES (nextval('outlet_generator'), 'Spice market');
-INSERT INTO outlets (id, name) VALUES (nextval('outlet_generator'), 'Wahm');
-INSERT INTO outlets (id, name) VALUES (nextval('outlet_generator'), 'W cafe');
+INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Crystal', false);
+INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'La Spiga', false);
+INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Market', false);
+INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Spice market', false);
+INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Wahm', false);
+INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'W cafe', false);
 
 DELETE FROM roles;
 ALTER SEQUENCE roles_generator RESTART;

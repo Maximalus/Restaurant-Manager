@@ -12,6 +12,9 @@
         <div id="admin_block">
             <ul><h3>Працівники</h3>
                 <li>
+                    <a th:href="@{/admin/createUser}" sec:authorize="hasAuthority('ADMIN-WRITE')">Створити нового праціника</a><br>
+                </li>
+                <li>
                     <a th:href="@{/admin/allUsers}" sec:authorize="hasAuthority('ADMIN-READ')">Список працівників</a><br>
                 </li>
             </ul>

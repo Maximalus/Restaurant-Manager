@@ -19,10 +19,41 @@
     <input th:type="text" th:field="*{firstName}" th:id="firstName" autofocus="autofocus"><br>
     <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span><br>
 
-    <label th:for="email">Ім'я</label>
+    <label th:for="email">Електронна пошта</label>
     <input th:type="text" th:field="*{email}" th:id="email" autofocus="autofocus"><br>
     <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span><br>
 
+    <label th:for="email">Пароль</label>
+    <input th:type="password" th:field="*{password}" th:id="password" autofocus="autofocus"><br>
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br>
+
+    <table>
+        <tr>
+            <td>Роль користувача: </td>
+            <td>
+                <select th:field="${userDto.role}">
+                    <option value="">--</option>
+                    <option th:each="role:${roles}"
+                            th:value="${role}"
+                            th:text="${role}"></option>
+                </select>
+            </td>
+        </tr>
+    </table><br>
+
+    <table>
+        <tr>
+            <td>Заклад: </td>
+            <td>
+                <select th:field="${userDto.outlet}">
+                    <option value="">--</option>
+                    <option th:each="outlet:${outlets}"
+                            th:value="${outlet}"
+                            th:text="${outlet}"></option>
+                </select>
+            </td>
+        </tr>
+    </table><br>
 
     <input th:type="submit" th:value="Підтвердити">
 </form>

@@ -34,4 +34,7 @@ public class ProductDiscount{
 
     @Column(nullable = false)
     private int percentageDiscount;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

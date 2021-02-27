@@ -20,7 +20,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="profiles")
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_generator")
@@ -33,7 +33,7 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Credential credential;
 
     @EqualsAndHashCode.Exclude
@@ -43,4 +43,7 @@ public class User {
     @EqualsAndHashCode.Exclude
     @OneToMany(cascade = CascadeType.MERGE)
     private List<Order> orderList = new ArrayList<>();
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

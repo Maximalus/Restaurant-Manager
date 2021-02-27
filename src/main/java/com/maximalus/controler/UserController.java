@@ -40,14 +40,17 @@ public class UserController {
     }
 
     @GetMapping("/admin/createUser")
-    public String getCreateUserPage(User user){
+    public String getCreateUserPage(Model model){
+        model.addAttribute("userDto", new UserDto());
+        model.addAttribute("outlets", getListOfOutletNames());
+        model.addAttribute("roles", getListOfRoleNames());
         return "admin/manage/user/createUser";
     }
 
     @PostMapping("/admin/createUser")
     public String saveUserAndCredential(@ModelAttribute("userDto") UserDto userDto){
         Credential credential = CredentialDtoConverter.fromDto(userDto);
-        Role role = roleService.findByName("DEFAULT");
+        Role role = roleService.findByName(userDto.getRole());
         credential.setRole(role);
         credentialService.save(credential);
 
@@ -61,11 +64,12 @@ public class UserController {
     }
 
     @GetMapping("/admin/allUsers")
-    public String getManageProfilesPage(Model model){
+    public String getManageUsersPage(Model model){
         List<UserDto> userDtoList =
                 userService.findAll()
                         .stream()
                         .filter(user -> !user.equals(getAuthenticatedProfile()))
+                        .filter(user -> !user.isDeleted())
                         .map(UserDtoConverter::toDto).collect(Collectors.toList());
         model.addAttribute("users", userDtoList);
         return "admin/manage/user/allUsers";
@@ -76,11 +80,9 @@ public class UserController {
         Long userId = Long.parseLong(id);
         User user = userService.findById(userId);
         UserDto userDto = UserDtoConverter.toDto(user);
-        List<String> roleList = roleService.findAll().stream().map(Role::getName).collect(Collectors.toList());
-        List<String> outletList = outletService.findAll().stream().map(Outlet::getName).collect(Collectors.toList());
         model.addAttribute("userDto", userDto);
-        model.addAttribute("roles", roleList);
-        model.addAttribute("outlets", outletList);
+        model.addAttribute("roles", getListOfRoleNames());
+        model.addAttribute("outlets", getListOfOutletNames());
         return "admin/manage/user/editUser";
     }
 
@@ -110,7 +112,18 @@ public class UserController {
                 (org.springframework.security.core.userdetails.User)
                         SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = user.getUsername();
-        User authorizedUser = userService.findByEmail(username);
+        Credential credential = credentialService.findByUsername(username);
+        User authorizedUser = userService.findByCredential(credential);
         return authorizedUser;
+    }
+
+    private List<String> getListOfRoleNames(){
+        return roleService.findAll()
+                .stream().map(Role::getName).collect(Collectors.toList());
+    }
+
+    private List<String> getListOfOutletNames(){
+        return outletService.findAll()
+                .stream().map(Outlet::getName).collect(Collectors.toList());
     }
 }
