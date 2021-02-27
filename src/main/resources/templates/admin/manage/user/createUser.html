@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="uk" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Створення нового користувача</title>
+    <title>Створити нового працівника</title>
 </head>
 
 <body>
+    <div id="identification_block" sec:authorize="isAuthenticated()">
+        <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
+        <a th:href="@{/logout}">Вихід з системи</a>
+    </div><br>
 <form th:action="@{/admin/createUser}" th:object="${userDto}" th:method="post">
     <label th:for="lastName">Прізвище</label>
     <input th:type="text" th:field="*{lastName}" th:id="lastName" autofocus="autofocus">

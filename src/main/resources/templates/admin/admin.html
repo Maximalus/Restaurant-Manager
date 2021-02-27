@@ -32,7 +32,7 @@
                        sec:authorize="hasAuthority('ADMIN-WRITE')">Новий інгредієнт</a>
                 </li>
                 <li>
-                    <a sec:authorize="hasAuthority('ADMIN-READ')">Список інгредієнтів</a>
+                    <a th:href="@{/admin/allIngredients}" sec:authorize="hasAuthority('ADMIN-READ')">Список інгредієнтів</a>
                 </li>
                 <li>
                     <a sec:authorize="hasAuthority('ADMIN-WRITE')">Нова група інгредієнтів</a>

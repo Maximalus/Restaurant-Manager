@@ -15,11 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,7 +50,11 @@ public class UserController {
     }
 
     @PostMapping("/admin/createUser")
-    public String saveUserAndCredential(@ModelAttribute("userDto") UserDto userDto){
+    public String saveUserAndCredential(@Valid @ModelAttribute("userDto") UserDto userDto,
+                                        BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "403";
+        }
         Credential credential = CredentialDtoConverter.fromDto(userDto);
         Role role = roleService.findByName(userDto.getRole());
         credential.setRole(role);
@@ -68,7 +74,7 @@ public class UserController {
         List<UserDto> userDtoList =
                 userService.findAll()
                         .stream()
-                        .filter(user -> !user.equals(getAuthenticatedProfile()))
+                        .filter(user -> !user.equals(getAuthenticatedUser()))
                         .filter(user -> !user.isDeleted())
                         .map(UserDtoConverter::toDto).collect(Collectors.toList());
         model.addAttribute("users", userDtoList);
@@ -87,27 +93,30 @@ public class UserController {
     }
 
     @PostMapping(value = "/admin/editUser")
-    public String postProfile(@RequestParam String id,
-                                        @RequestParam String firstName,
-                                        @RequestParam String lastName,
-                                        @RequestParam String outlet){
-        User user = userService.findById(Long.parseLong(id));
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        Outlet foundOutlet = outletService.findByName(outlet);
+    public String postProfile(@Valid @ModelAttribute("userDto") UserDto userDto,
+                              BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "403";
+        }
+        User user = userService.findById(userDto.getId());
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        Outlet foundOutlet = outletService.findByName(userDto.getOutlet());
+        Role role = roleService.findByName(userDto.getRole());
+        user.getCredential().setRole(role);
         user.setOutlet(foundOutlet);
         userService.update(user);
         return "admin/admin";
     }
 
     @GetMapping(value = "/admin/deleteUser")
-    public String deleteProfile(@RequestParam("id") String id){
+    public String deleteUser(@RequestParam("id") String id){
         Long userId = Long.parseLong(id);
         userService.deleteById(userId);
         return "admin/manage/user/allUsers";
     }
 
-    private User getAuthenticatedProfile(){
+    private User getAuthenticatedUser(){
         org.springframework.security.core.userdetails.User user =
                 (org.springframework.security.core.userdetails.User)
                         SecurityContextHolder.getContext().getAuthentication().getPrincipal();

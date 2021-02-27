@@ -25,6 +25,7 @@ public class CredentialServiceImpl implements CredentialService {
         credentialRepository.save(credential);
     }
 
+    @Override
     public Credential findByUsername(String username){
         return credentialRepository.findByUsername(username).orElseThrow();
     }

@@ -44,8 +44,8 @@ public class TestData {
         ingredient.setId(6L);
         ingredient.setName("Watermelon juice");
         ingredient.setCostPerUnit(BigDecimal.valueOf(12.00).setScale(2));
-        ingredient.setInitialQuantity(2000);
-        ingredient.setCurrentQuantity(1980);
+        ingredient.setInitialQuantity(BigDecimal.valueOf(2000));
+        ingredient.setCurrentQuantity(BigDecimal.valueOf(1980));
         ingredient.setTotalPrice(BigDecimal.valueOf(24000.00).setScale(2));
         ingredient.setUnitName("Liter");
         return ingredient;
@@ -56,8 +56,8 @@ public class TestData {
         ingredient.setId(1L);
         ingredient.setName("Strawberry juice");
         ingredient.setCostPerUnit(BigDecimal.valueOf(12).setScale(2));
-        ingredient.setInitialQuantity(2000);
-        ingredient.setCurrentQuantity(1980);
+        ingredient.setInitialQuantity(BigDecimal.valueOf(2000));
+        ingredient.setCurrentQuantity(BigDecimal.valueOf(1980));
         ingredient.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
         ingredient.setUnitName("Liter");
         return ingredient;
@@ -68,8 +68,8 @@ public class TestData {
         ingredient.setId(1L);
         ingredient.setName("Grapefruit juice");
         ingredient.setCostPerUnit(BigDecimal.valueOf(12.00).setScale(2));
-        ingredient.setInitialQuantity(2000);
-        ingredient.setCurrentQuantity(1980);
+        ingredient.setInitialQuantity(BigDecimal.valueOf(2000));
+        ingredient.setCurrentQuantity(BigDecimal.valueOf(1980));
         ingredient.setTotalPrice(BigDecimal.valueOf(24000.00).setScale(2));
         ingredient.setUnitName("Liter");
 
@@ -77,8 +77,8 @@ public class TestData {
         ingredient2.setId(2L);
         ingredient2.setName("Orange juice");
         ingredient2.setCostPerUnit(BigDecimal.valueOf(12).setScale(2));
-        ingredient2.setInitialQuantity(2000);
-        ingredient2.setCurrentQuantity(1980);
+        ingredient2.setInitialQuantity(BigDecimal.valueOf(2000));
+        ingredient2.setCurrentQuantity(BigDecimal.valueOf(1980));
         ingredient2.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
         ingredient2.setUnitName("Liter");
 
@@ -86,8 +86,8 @@ public class TestData {
         ingredient3.setId(3L);
         ingredient3.setName("Apple juice");
         ingredient3.setCostPerUnit(BigDecimal.valueOf(12).setScale(2));
-        ingredient3.setInitialQuantity(2000);
-        ingredient3.setCurrentQuantity(1980);
+        ingredient3.setInitialQuantity(BigDecimal.valueOf(2000));
+        ingredient3.setCurrentQuantity(BigDecimal.valueOf(1980));
         ingredient3.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
         ingredient3.setUnitName("Liter");
 
@@ -95,8 +95,8 @@ public class TestData {
         ingredient4.setId(4L);
         ingredient4.setName("Pineapple juice");
         ingredient4.setCostPerUnit(BigDecimal.valueOf(12).setScale(2));
-        ingredient4.setInitialQuantity(2000);
-        ingredient4.setCurrentQuantity(1980);
+        ingredient4.setInitialQuantity(BigDecimal.valueOf(2000));
+        ingredient4.setCurrentQuantity(BigDecimal.valueOf(1980));
         ingredient4.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
         ingredient4.setUnitName("Liter");
 
@@ -104,8 +104,8 @@ public class TestData {
         ingredient5.setId(5L);
         ingredient5.setName("Mango juice");
         ingredient5.setCostPerUnit(BigDecimal.valueOf(12).setScale(2));
-        ingredient5.setInitialQuantity(2000);
-        ingredient5.setCurrentQuantity(1980);
+        ingredient5.setInitialQuantity(BigDecimal.valueOf(2000));
+        ingredient5.setCurrentQuantity(BigDecimal.valueOf(1980));
         ingredient5.setTotalPrice(BigDecimal.valueOf(24000).setScale(2));
         ingredient5.setUnitName("Liter");
 
