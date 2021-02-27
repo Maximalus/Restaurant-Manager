@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -80,7 +80,7 @@ public class IngredientController {
         Ingredient ingredient = ingredientService.findById(ingredientDto.getId());
         ingredient.setName(ingredientDto.getName());
         ingredient.setUnitName(ingredientDto.getNameOfUnit());
-        ingredient.setChangingDate(LocalDate.now());
+        ingredient.setChangingDate(LocalDateTime.now());
 
         IngredientGroup ingredientGroup =
                 ingredientGroupService.findByName(ingredientDto.getIngredientGroupName());

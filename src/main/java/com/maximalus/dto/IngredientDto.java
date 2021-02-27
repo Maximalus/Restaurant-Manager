@@ -2,7 +2,7 @@ package com.maximalus.dto;
 
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class IngredientDto {
@@ -14,6 +14,6 @@ public class IngredientDto {
     private String currentQuantity;
     private String initialQuantity;
     private String totalPrice;
-    private LocalDate creationDate;
-    private LocalDate changingDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime changingDate;
 }
