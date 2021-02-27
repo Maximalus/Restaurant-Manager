@@ -1,6 +1,7 @@
 package com.maximalus.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,12 +22,14 @@ public class Item {
     @SequenceGenerator(allocationSize = 1, name = "item_generator")
     private Long id;
 
+    @EqualsAndHashCode.Exclude
     @OneToOne
     private Product product;
 
     @Column(nullable = false)
     private int orderedAmount;
 
+    @EqualsAndHashCode.Exclude
     @OneToOne
     private ProductDiscount productDiscount;
 

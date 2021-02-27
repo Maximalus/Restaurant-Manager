@@ -18,6 +18,7 @@ public class ProductGroup {
     @Column(nullable = false)
     private String nameOfProductsGroup;
 
+    @EqualsAndHashCode.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> productList = new ArrayList<>();

@@ -18,10 +18,12 @@ public class Outlet {
     @Column(nullable = false)
     private String name;
 
+    @EqualsAndHashCode.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orderList = new ArrayList<>();
 
+    @EqualsAndHashCode.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany
     private List<User> userList = new ArrayList<>();

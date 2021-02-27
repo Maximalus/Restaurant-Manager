@@ -28,6 +28,7 @@ public class Product {
     @Column(nullable = false)
     private int availableQuantity;
 
+    @EqualsAndHashCode.Exclude
     @ElementCollection
     private List<Recipe> recipeList = new ArrayList<>();
 }

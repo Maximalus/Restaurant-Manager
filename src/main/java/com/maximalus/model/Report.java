@@ -14,6 +14,7 @@ public abstract class Report {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @EqualsAndHashCode.Exclude
     @OneToOne(cascade = CascadeType.ALL)
     private Outlet outlet;
 

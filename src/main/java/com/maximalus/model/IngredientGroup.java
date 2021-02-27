@@ -18,6 +18,7 @@ public class IngredientGroup {
     @Column(nullable = false)
     private String name;
 
+    @EqualsAndHashCode.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(mappedBy = "ingredientGroup", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients = new ArrayList<>();
@@ -31,6 +32,4 @@ public class IngredientGroup {
         ingredients.remove(ingredient);
         ingredient.setIngredientGroup(null);
     }
-
-
 }
