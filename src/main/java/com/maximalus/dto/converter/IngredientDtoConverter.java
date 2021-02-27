@@ -4,7 +4,7 @@ import com.maximalus.dto.IngredientDto;
 import com.maximalus.model.Ingredient;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class IngredientDtoConverter {
     public static Ingredient fromDto(IngredientDto ingredientDto){
@@ -18,8 +18,8 @@ public class IngredientDtoConverter {
         ingredient.setCurrentQuantity(BigDecimal.ZERO);
         ingredient.setInitialQuantity(BigDecimal.ZERO);
         ingredient.setUnitName(ingredientDto.getNameOfUnit());
-        ingredient.setCreationDate(LocalDate.now());
-        ingredient.setChangingDate(LocalDate.now());
+        ingredient.setCreationDate(LocalDateTime.now());
+        ingredient.setChangingDate(LocalDateTime.now());
         ingredient.setTotalPrice(BigDecimal.ZERO);
         return ingredient;
     }
