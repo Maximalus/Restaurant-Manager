@@ -1,6 +1,7 @@
 package com.maximalus.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +24,7 @@ public class ProductDiscount{
     @Column(nullable = false)
     private String discountName;
 
+    @EqualsAndHashCode.Exclude
     @OneToOne
     private Product product;
 

@@ -1,6 +1,7 @@
 package com.maximalus.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.CascadeType;
@@ -28,6 +29,7 @@ public class Role {
     @Column(nullable = false)
     private String name;
 
+    @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Permission> permissions = new HashSet<>();
 

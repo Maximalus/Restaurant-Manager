@@ -1,6 +1,7 @@
 package com.maximalus.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,12 +41,15 @@ public class User {
     @Column(nullable = false)
     private String passwordConfirm;
 
+    @EqualsAndHashCode.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     private Role role;
 
+    @EqualsAndHashCode.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     private Outlet outlet;
 
+    @EqualsAndHashCode.Exclude
     @OneToMany(cascade = CascadeType.MERGE)
     private List<Order> orderList = new ArrayList<>();
 

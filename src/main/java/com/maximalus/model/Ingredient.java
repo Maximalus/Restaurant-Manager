@@ -37,6 +37,7 @@ public class Ingredient {
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal costPerUnit;
 
+    @EqualsAndHashCode.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
     private IngredientGroup ingredientGroup;
 

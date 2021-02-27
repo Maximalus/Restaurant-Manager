@@ -18,9 +18,11 @@ public class Order {
     @SequenceGenerator(allocationSize = 1, name = "order_generator")
     private Long id;
 
+    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @EqualsAndHashCode.Exclude
     @OneToMany
     private List<Item> items = new ArrayList<>();
 
@@ -33,9 +35,11 @@ public class Order {
     @Column(nullable = false)
     private LocalDateTime creationDate = LocalDateTime.now();
 
+    @EqualsAndHashCode.Exclude
     @OneToOne
     private CompanyDiscount companyDiscount;
 
+    @EqualsAndHashCode.Exclude
     @OneToOne
     private DiscountProof discountProof;
 

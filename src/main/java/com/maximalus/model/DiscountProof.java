@@ -1,5 +1,7 @@
 package com.maximalus.model;
 
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +28,7 @@ public class DiscountProof {
     @Column(nullable = false)
     private LocalDate creationDate = LocalDate.now();
 
+    @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "discountProof")
     private Order order;
 }

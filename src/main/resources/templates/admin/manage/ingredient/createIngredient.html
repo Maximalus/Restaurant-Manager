@@ -16,13 +16,13 @@
     </div><br>
 <form th:action="@{/admin/createIngredient}" th:object="${ingredientDto}" th:method="post">
     <label>Назва інгредієнта</label>
-    <input th:type="text" th:field="${ingredientDto.name}"><br>
+    <input th:type="text" th:value="${ingredientDto.name}"><br>
 
      <label>Ціна ща одиницю товару</label>
-     <input th:type="number" th:field="${ingredientDto.costPerUnit}"><br>
+     <input th:type="number" th:value="${ingredientDto.costPerUnit}"><br>
 
      <label>Одиниця вимірювання товару</label>
-     <input th:type="text" th:field="${ingredientDto.nameOfUnit}"><br>
+     <input th:type="text" th:value="${ingredientDto.nameOfUnit}"><br>
 
     <table>
             <tr>
@@ -31,7 +31,7 @@
                     <select th:field="${ingredientDto.ingredientGroupName}">
                         <option value="">--</option>
                         <option th:each="ingredientGroup:${ingredientGroups}"
-                                th:field="${ingredientDto.ingredientGroup}"
+                                th:value="${ingredientDto.ingredientGroup}"
                                 th:text="${ingredientGroup}"></option>
                     </select>
                 </td>
