@@ -14,4 +14,7 @@ public class Recipe {
 
     @Column(nullable = false)
     private double amountOfIngredient;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

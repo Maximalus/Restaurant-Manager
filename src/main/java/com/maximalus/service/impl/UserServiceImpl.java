@@ -1,5 +1,6 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.model.Credential;
 import com.maximalus.model.User;
 import com.maximalus.repository.UserRepository;
 import com.maximalus.service.UserService;
@@ -24,8 +25,9 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    public User findByEmail(String username){
-        return userRepository.findByEmail(username).orElseThrow();
+    @Override
+    public User findByCredential(Credential credential) {
+        return userRepository.findByCredential(credential);
     }
 
     public List<User> findAll(){

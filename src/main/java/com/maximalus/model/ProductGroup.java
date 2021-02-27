@@ -22,4 +22,7 @@ public class ProductGroup {
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> productList = new ArrayList<>();
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

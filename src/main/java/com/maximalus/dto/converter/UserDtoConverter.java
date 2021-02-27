@@ -10,6 +10,8 @@ public class UserDtoConverter {
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
         userDto.setOutlet(user.getOutlet().getName());
+        userDto.setRole(user.getCredential().getRole().getName());
+        userDto.setEmail(user.getCredential().getRole().getName());
         return userDto;
     }
 
@@ -17,6 +19,7 @@ public class UserDtoConverter {
         User user = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
+        user.setDeleted(false);
         return user;
     }
 }

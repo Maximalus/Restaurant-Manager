@@ -41,6 +41,9 @@ public class Ingredient {
     @ManyToOne(cascade = CascadeType.ALL)
     private IngredientGroup ingredientGroup;
 
+    @Column(nullable = false)
+    private boolean isDeleted;
+
     public void setIngredientGroup(IngredientGroup ingredientGroup){
         ingredientGroup.addIngredient(this);
     }

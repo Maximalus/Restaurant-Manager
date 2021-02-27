@@ -33,4 +33,7 @@ public class CompanyDiscount{
 
     @Column(nullable = false)
     private int percentageDiscount;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }

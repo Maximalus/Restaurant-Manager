@@ -35,4 +35,7 @@ public class Item {
     private ProductDiscount productDiscount;
 
     private BigDecimal totalCost;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 }
