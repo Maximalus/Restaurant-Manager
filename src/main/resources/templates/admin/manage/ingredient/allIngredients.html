@@ -10,6 +10,13 @@
     <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
     <a th:href="@{/logout}">Вихід з системи</a>
 </div><br>
+<div id="head_block" sec:authorize="isAuthenticated()">
+    <h1>Навігація</h1><br>
+    <a th:href="@{/admin/admin}">Панель адміністратора</a>
+    <a th:href="@{/admin/createIngredient}">Створити новий інгредієнт</a>
+    <a th:href="@{/admin/createIngredient}">Створити нову групу інгредієнтів</a>
+    <a th:href="@{/admin/createIngredient}">Переглянути список інгредієнтів</a>
+</div><br>
 <table>
     <thead>
     <tr>
