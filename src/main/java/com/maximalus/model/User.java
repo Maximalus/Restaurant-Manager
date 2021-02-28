@@ -34,7 +34,7 @@ public class User {
     @Column(nullable = false)
     private String lastName;
 
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToOne(cascade = CascadeType.ALL)
     private Credential credential;
 
     @EqualsAndHashCode.Exclude

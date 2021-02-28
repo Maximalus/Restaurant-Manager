@@ -29,10 +29,11 @@ public class WebAppConfig implements WebMvcConfigurer {
         
         registry.addViewController("/admin/allIngredients")
                 .setViewName("admin/manage/ingredient/allIngredients");
-        registry.addViewController("/admin/editIngredient")
-                .setViewName("admin/manage/ingredient/editIngredient");
         registry.addViewController("/admin/createIngredient")
                 .setViewName("admin/manage/ingredient/createIngredient");
+        registry.addViewController("/admin/editIngredient")
+                .setViewName("admin/manage/ingredient/editIngredient");
+
 
         registry.addViewController("/403").setViewName("403");
         registry.addViewController("/logout").setViewName("login");
