@@ -16,8 +16,8 @@
     </div><br>
     <div id="head_block" sec:authorize="isAuthenticated()">
         <h1>Навігація</h1><br>
-        <a th:href="@{/admin/admin}">Панель адміністратора</a>
-        <a th:href="@{/admin/allUsers}">Переглянути список працівників</a>
+        <a th:href="@{/admin/admin}">Панель адміністратора</a><br>
+        <a th:href="@{/admin/allUsers}">Переглянути список працівників</a><br>
     </div><br>
 <form th:action="@{/admin/createUser}" th:object="${userDto}" th:method="post">
     <label th:for="lastName">Прізвище</label>

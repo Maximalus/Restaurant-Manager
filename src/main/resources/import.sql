@@ -1,26 +1,26 @@
 DELETE FROM ingredient_groups;
 ALTER SEQUENCE ingredient_group_generator RESTART;
-INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Milk', false);
-INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Water', false);
-INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Spices', false);
-INSERT INTO ingredient_groups (id, name, is_deleted) VALUES (nextval('ingredient_group_generator'), 'Juice', false);
+INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Milk', false, current_timestamp, current_timestamp);
+INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Water', false, current_timestamp, current_timestamp);
+INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Spices', false, current_timestamp, current_timestamp);
+INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Juice', false, current_timestamp, current_timestamp);
 
 DELETE FROM ingredients;
 ALTER SEQUENCE ingredient_generator RESTART;
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Orange juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Apple juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Pineapple juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Mango juice', 1980, 2000, 24000, 12, 'Liter', false, 4);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Orange juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Apple juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Pineapple juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Mango juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
 
 DELETE FROM outlets;
 ALTER SEQUENCE outlet_generator RESTART;
-INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Crystal', false);
-INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'La Spiga', false);
-INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Market', false);
-INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Spice market', false);
-INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'Wahm', false);
-INSERT INTO outlets (id, name, is_deleted) VALUES (nextval('outlet_generator'), 'W cafe', false);
+INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('outlet_generator'), 'Crystal', false, current_timestamp, current_timestamp);
+INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('outlet_generator'), 'La Spiga', false, current_timestamp, current_timestamp);
+INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('outlet_generator'), 'Market', false, current_timestamp, current_timestamp);
+INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('outlet_generator'), 'Spice market', false, current_timestamp, current_timestamp);
+INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('outlet_generator'), 'Wahm', false, current_timestamp, current_timestamp);
+INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('outlet_generator'), 'W cafe', false, current_timestamp, current_timestamp);
 
 DELETE FROM roles;
 ALTER SEQUENCE roles_generator RESTART;
@@ -48,8 +48,8 @@ INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'WAI
 INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'WAITER-WRITE');
 
 DELETE FROM roles_permissions;
-INSERT INTO roles_permissions (role_id, permissions_id) VALUES (1,1);
-INSERT INTO roles_permissions (role_id, permissions_id) VALUES (1,2);
-INSERT INTO roles_permissions (role_id, permissions_id) VALUES (3,1);
-INSERT INTO roles_permissions (role_id, permissions_id) VALUES (3,5);
-INSERT INTO roles_permissions (role_id, permissions_id) VALUES (3,6);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (1,1);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (1,2);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,1);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,5);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,6);

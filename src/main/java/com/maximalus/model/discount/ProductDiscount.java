@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -34,6 +35,13 @@ public class ProductDiscount{
 
     @Column(nullable = false)
     private int percentageDiscount;
+
+    @Column(nullable = false)
+    private LocalDateTime creationDate;
+
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
+
 
     @Column(nullable = false)
     private boolean isDeleted;

@@ -10,7 +10,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.HashSet;
@@ -30,7 +33,14 @@ public class Role {
     private String name;
 
     @EqualsAndHashCode.Exclude
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "role")
+    private Set<Credential> credentials = new HashSet<>();
+
+    @EqualsAndHashCode.Exclude
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "roles_permissions",
+            joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "permission_id", referencedColumnName = "id")})
     private Set<Permission> permissions = new HashSet<>();
 
     public Set<SimpleGrantedAuthority> getAuthorities(){
