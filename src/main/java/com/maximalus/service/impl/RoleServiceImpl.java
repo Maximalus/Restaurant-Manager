@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -15,11 +16,22 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Override
     public Role findByName(String name){
         return roleRepository.findByName(name);
     }
 
+    @Override
     public List<Role> findAll(){
         return (List<Role>) roleRepository.findAll();
+    }
+
+    @Override
+    public List<String> getListOfRoleNames(){
+        return findAll()
+                .stream()
+                .filter(role -> !role.getName().equals("ADMINISTRATOR"))
+                .filter(role -> !role.getName().equals("GENERAL_MANAGER"))
+                .map(Role::getName).collect(Collectors.toList());
     }
 }

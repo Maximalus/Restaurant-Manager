@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @Transactional
 public class CredentialServiceImpl implements CredentialService {
@@ -22,6 +24,8 @@ public class CredentialServiceImpl implements CredentialService {
     @Override
     public void save(Credential credential) {
         credential.setPassword(passwordEncoder.encode(credential.getPassword()));
+        credential.setCreationDate(LocalDateTime.now());
+        credential.setChangingDate(LocalDateTime.now());
         credentialRepository.save(credential);
     }
 

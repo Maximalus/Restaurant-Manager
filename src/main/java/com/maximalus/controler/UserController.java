@@ -44,8 +44,8 @@ public class UserController {
     @GetMapping("/admin/createUser")
     public String getCreateUserPage(Model model){
         model.addAttribute("userDto", new UserDto());
-        model.addAttribute("outlets", getListOfOutletNames());
-        model.addAttribute("roles", getListOfRoleNames());
+        model.addAttribute("outlets", outletService.getListOfOutletNames());
+        model.addAttribute("roles", roleService.getListOfRoleNames());
         return "admin/manage/user/createUser";
     }
 
@@ -59,14 +59,13 @@ public class UserController {
         Role role = roleService.findByName(userDto.getRole());
         credential.setRole(role);
         credentialService.save(credential);
-
-        User user = UserDtoConverter.fromDto(userDto);
+        User user = UserDtoConverter.createFromDto(userDto);
         Outlet outlet = outletService.findByName(userDto.getOutlet());
         user.setOutlet(outlet);
         user.setCredential(credential);
         userService.save(user);
 
-        return "admin/manage/user/allUsers";
+        return "admin/admin";
     }
 
     @GetMapping("/admin/allUsers")
@@ -87,8 +86,8 @@ public class UserController {
         User user = userService.findById(userId);
         UserDto userDto = UserDtoConverter.toDto(user);
         model.addAttribute("userDto", userDto);
-        model.addAttribute("roles", getListOfRoleNames());
-        model.addAttribute("outlets", getListOfOutletNames());
+        model.addAttribute("roles", roleService.getListOfRoleNames());
+        model.addAttribute("outlets", outletService.getListOfOutletNames());
         return "admin/manage/user/editUser";
     }
 
@@ -99,12 +98,9 @@ public class UserController {
             return "403";
         }
         User user = userService.findById(userDto.getId());
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        Outlet foundOutlet = outletService.findByName(userDto.getOutlet());
+        Outlet outlet = outletService.findByName(userDto.getOutlet());
         Role role = roleService.findByName(userDto.getRole());
-        user.getCredential().setRole(role);
-        user.setOutlet(foundOutlet);
+        UserDtoConverter.updateFromDto(userDto, user, role, outlet);
         userService.update(user);
         return "admin/admin";
     }
@@ -124,15 +120,5 @@ public class UserController {
         Credential credential = credentialService.findByUsername(username);
         User authorizedUser = userService.findByCredential(credential);
         return authorizedUser;
-    }
-
-    private List<String> getListOfRoleNames(){
-        return roleService.findAll()
-                .stream().map(Role::getName).collect(Collectors.toList());
-    }
-
-    private List<String> getListOfOutletNames(){
-        return outletService.findAll()
-                .stream().map(Outlet::getName).collect(Collectors.toList());
     }
 }
