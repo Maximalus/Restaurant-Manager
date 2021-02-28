@@ -14,6 +14,13 @@
         <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
         <a th:href="@{/logout}">Вихід з системи</a>
     </div><br>
+    <div id="head_block" sec:authorize="isAuthenticated()">
+        <h1>Навігація</h1><br>
+        <a th:href="@{/admin/admin}">Панель адміністратора</a>
+        <a th:href="@{/admin/allIngredients}">Переглянути списко інгредієнтів</a><br>
+        <a th:href="@{/admin/createIngredient}">Створити нову групу інгредієнтів</a><br>
+        <a th:href="@{/admin/createIngredient}">Переглянути список інгредієнтів</a><br>
+    </div><br>
 <form th:action="@{/admin/createIngredient}" th:object="${ingredientDto}" th:method="post" commandName="createIngredient">
     <label th:for="name">Назва інгредієнта</label>
     <input th:type="text" th:field="*{name}" th:id="name" autofocus="autofocus">

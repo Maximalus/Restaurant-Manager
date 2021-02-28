@@ -14,6 +14,11 @@
         <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
         <a th:href="@{/logout}">Вихід з системи</a>
     </div><br>
+    <div id="head_block" sec:authorize="isAuthenticated()">
+        <h1>Навігація</h1><br>
+        <a th:href="@{/admin/admin}">Панель адміністратора</a>
+        <a th:href="@{/admin/allUsers}">Переглянути список працівників</a>
+    </div><br>
 <form th:action="@{/admin/createUser}" th:object="${userDto}" th:method="post">
     <label th:for="lastName">Прізвище</label>
     <input th:type="text" th:field="*{lastName}" th:id="lastName" autofocus="autofocus">
