@@ -12,7 +12,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "discount_proofs")
@@ -27,7 +27,10 @@ public class DiscountProof {
     private String encodedImage;
 
     @Column(nullable = false)
-    private LocalDate creationDate = LocalDate.now();
+    private LocalDateTime creationDate;
+
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
 
     @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "discountProof")

@@ -20,5 +20,9 @@ public abstract class Report {
     private Outlet outlet;
 
     @Column(nullable = false)
-    private LocalDateTime creationDate = LocalDateTime.now();
+    private LocalDateTime creationDate;
+
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
+
 }

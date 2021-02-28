@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -27,9 +27,10 @@ public class CompanyDiscount{
     private String companyName;
 
     @Column(nullable = false)
-    private LocalDate dateOfCreation = LocalDate.now();
+    private LocalDateTime creationDate;
 
-    private LocalDate dateOfChange;
+    @Column(nullable = false)
+    private LocalDateTime changingDate;
 
     @Column(nullable = false)
     private int percentageDiscount;

@@ -45,7 +45,6 @@ public class Ingredient {
     @Column(nullable = false)
     private LocalDateTime changingDate;
 
-
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal costPerUnit;
 

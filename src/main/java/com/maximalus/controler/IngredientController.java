@@ -33,7 +33,7 @@ public class IngredientController {
         model.addAttribute("ingredientDto", new IngredientDto());
 
         model.addAttribute("ingredientGroups", getListIngredientGroupNames());
-        return "admin/manage/ingredient/createIngredient";
+        return "create";
     }
 
     @PostMapping(value = "/admin/createIngredient")
