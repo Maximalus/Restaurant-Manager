@@ -8,6 +8,12 @@
     <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
     <a th:href="@{/logout}">Вихід з системи</a>
 </div><br>
+<div id="head_block" sec:authorize="isAuthenticated()">
+    <h1>Навігація</h1><br>
+    <a th:href="@{/admin/admin}">Панель адміністратора</a><br>
+    <a th:href="@{/admin/createUser}">Створити нового працівника</a><br>
+    <a th:href="@{/admin/allUsers}">Переглянути список працівників</a><br>
+</div><br>
 <form th:action="@{/admin/editUser(id=${userDto.id})}" th:method="post">
     <label>Прізвище</label>
     <input th:value="${userDto.lastName}" th:field="${userDto.lastName}"><br>

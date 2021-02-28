@@ -8,6 +8,13 @@
     <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
     <a th:href="@{/logout}">Вихід з системи</a>
 </div><br>
+<div id="head_block" sec:authorize="isAuthenticated()">
+    <h1>Навігація</h1><br>
+    <a th:href="@{/admin/admin}">Панель адміністратора</a><br>
+    <a th:href="@{/admin/allIngredients}">Переглянути список інгредієнтів</a><br>
+    <a th:href="@{/admin/createIngredient}">Створити нову групу інгредієнтів</a><br>
+    <a th:href="@{/admin/createIngredient}">Переглянути список інгредієнтів</a><br>
+</div><br>
 <form th:action="@{/admin/editIngredient(id=${ingredientDto.id})}" th:method="post">
     <label>Назва</label>
     <input th:value="${ingredientDto.name}" th:field="${ingredientDto.name}"><br>

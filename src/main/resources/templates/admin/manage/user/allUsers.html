@@ -10,11 +10,10 @@
         <h1>Користувач <span sec:authentication="name"> Username </span></h1><br>
         <a th:href="@{/logout}">Вихід з системи</a>
     </div><br>
-
     <div id="head_block" sec:authorize="isAuthenticated()">
         <h1>Навігація</h1><br>
-        <a th:href="@{/admin/admin}">Панель адміністратора</a>
-        <a th:href="@{/admin/createUser}">Створити нового працівника</a>
+        <a th:href="@{/admin/admin}">Панель адміністратора</a><br>
+        <a th:href="@{/admin/createUser}">Створити нового працівника</a><br>
     </div><br>
 
     <table>
