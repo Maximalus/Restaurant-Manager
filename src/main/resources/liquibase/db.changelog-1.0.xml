@@ -1,0 +1,657 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="Maximalus (generated)" id="1614531828840-1">
+        <createTable tableName="company_discounts">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="company_discounts_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="percentage_discount" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-2">
+        <createTable tableName="credentials">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="credentials_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-3">
+        <createTable tableName="discount_proofs">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="discount_proofs_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="encoded_image" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-4">
+        <createTable tableName="orders">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="orders_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_payed" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_customers" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_table" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_cost" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_discount_id" type="BIGINT"/>
+            <column name="discount_proof_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-5">
+        <createTable tableName="ingredients">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ingredients_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cost_per_unit" type="numeric(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_quantity" type="numeric(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="initial_quantity" type="numeric(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_price" type="numeric(10, 2)"/>
+            <column name="unit_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ingredient_group_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-6">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/ingredients.csv" quotchar="&quot;" separator="," tableName="ingredients">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="changing_date" name="changing_date" type="DATE"/>
+            <column header="cost_per_unit" name="cost_per_unit" type="NUMERIC"/>
+            <column header="creation_date" name="creation_date" type="DATE"/>
+            <column header="current_quantity" name="current_quantity" type="NUMERIC"/>
+            <column header="initial_quantity" name="initial_quantity" type="NUMERIC"/>
+            <column header="is_deleted" name="is_deleted" type="BOOLEAN"/>
+            <column header="name" name="name" type="STRING"/>
+            <column header="total_price" name="total_price" type="NUMERIC"/>
+            <column header="unit_name" name="unit_name" type="STRING"/>
+            <column header="ingredient_group_id" name="ingredient_group_id" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-7">
+        <createTable tableName="product_recipe_list">
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount_of_ingredient" type="FLOAT8">
+                <constraints nullable="false"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ingredient_id" type="BIGINT"/>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-8">
+        <createTable tableName="users">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credential_id" type="BIGINT"/>
+            <column name="outlet_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-9">
+        <createTable tableName="product_discounts">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="product_discounts_pkey"/>
+            </column>
+            <column name="amount_of_product" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="discount_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="percentage_discount" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-10">
+        <createTable tableName="products">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="products_pkey"/>
+            </column>
+            <column name="available_quantity" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="markup_percentage" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_of_product" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price_per_unit" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-11">
+        <createTable tableName="outlets">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="outlets_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-12">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/outlets.csv" quotchar="&quot;" separator="," tableName="outlets">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="changing_date" name="changing_date" type="DATE"/>
+            <column header="creation_date" name="creation_date" type="DATE"/>
+            <column header="is_deleted" name="is_deleted" type="BOOLEAN"/>
+            <column header="name" name="name" type="STRING"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-13">
+        <createTable tableName="outlets_user_list">
+            <column name="outlet_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_list_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-14">
+        <createTable tableName="product_groups_product_list">
+            <column name="product_group_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_list_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-15">
+        <createTable tableName="sales_reports">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="sales_reports_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="outlet_id" type="BIGINT"/>
+            <column name="cost_of_ingredients" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_paid_orders" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_un_paid_orders" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_revenue" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_sales" type="numeric(19, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-16">
+        <createTable tableName="general_reports">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="general_reports_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="outlet_id" type="BIGINT"/>
+            <column name="number_of_customers" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_orders" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_unpaid_orders" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-17">
+        <createTable tableName="product_groups">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="product_groups_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name_of_products_group" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-18">
+        <createTable tableName="permissions">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="permissions_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-19">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/permissions.csv" quotchar="&quot;" separator="," tableName="permissions">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="name" name="name" type="STRING"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-20">
+        <createTable tableName="roles_permissions">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_permissions_pkey"/>
+            </column>
+            <column name="permission_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_permissions_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-21">
+        <createTable tableName="items">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="items_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ordered_amount" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_cost" type="numeric(19, 2)"/>
+            <column name="product_id" type="BIGINT"/>
+            <column name="product_discount_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-22">
+        <createTable tableName="orders_items">
+            <column name="order_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="items_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-23">
+        <createTable tableName="outlets_order_list">
+            <column name="outlet_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_list_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-24">
+        <createTable tableName="ingredient_groups">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ingredient_groups_pkey"/>
+            </column>
+            <column name="changing_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-25">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/ingredient_groups.csv" quotchar="&quot;" separator="," tableName="ingredient_groups">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="changing_date" name="changing_date" type="DATE"/>
+            <column header="creation_date" name="creation_date" type="DATE"/>
+            <column header="is_deleted" name="is_deleted" type="BOOLEAN"/>
+            <column header="name" name="name" type="STRING"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-26">
+        <createTable tableName="roles">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-27">
+        <loadData commentLineStartsWith="#" encoding="UTF-8" file="data/roles.csv" quotchar="&quot;" separator="," tableName="roles">
+            <column header="id" name="id" type="NUMERIC"/>
+            <column header="name" name="name" type="STRING"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-28">
+        <createTable tableName="users_order_list">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_list_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-29">
+        <createTable tableName="profiles">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="profiles_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credential_id" type="BIGINT"/>
+            <column name="outlet_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-30">
+        <createTable tableName="profiles_order_list">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_list_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-31">
+        <addForeignKeyConstraint baseColumnNames="company_discount_id" baseTableName="orders" constraintName="fk1vos3mxcexip7bb1vo8fl0udf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="company_discounts" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-32">
+        <addForeignKeyConstraint baseColumnNames="credential_id" baseTableName="users" constraintName="fk45ch6clbute36imxcljd6njiw" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="credentials" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-33">
+        <addForeignKeyConstraint baseColumnNames="discount_proof_id" baseTableName="orders" constraintName="fkcxsp2ojt436ag5xjm6o6cmqum" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="discount_proofs" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-34">
+        <addForeignKeyConstraint baseColumnNames="ingredient_id" baseTableName="product_recipe_list" constraintName="fk2juic9ulycbqg4ejs7kfr65w4" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ingredients" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-35">
+        <addForeignKeyConstraint baseColumnNames="outlet_id" baseTableName="outlets_user_list" constraintName="fk8pppt26oy7ukg2vtmwdsdoov0" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="outlets" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-36">
+        <addForeignKeyConstraint baseColumnNames="user_list_id" baseTableName="outlets_user_list" constraintName="fkk0eph4jt73scmwdq8sofnjwmn" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-37">
+        <addUniqueConstraint columnNames="user_list_id" constraintName="uk_q7pbcgq4meyftqdm0khr9h7su" tableName="outlets_user_list"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-38">
+        <addForeignKeyConstraint baseColumnNames="product_list_id" baseTableName="product_groups_product_list" constraintName="fk9gkkd3d2a2a8xbng32u9c5okj" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-39">
+        <addUniqueConstraint columnNames="product_list_id" constraintName="uk_cscymtwvgpboovopwj8splwtl" tableName="product_groups_product_list"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-40">
+        <addForeignKeyConstraint baseColumnNames="outlet_id" baseTableName="sales_reports" constraintName="fk_6572p7gs5us6a181w9dn05nhl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="outlets" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-41">
+        <addForeignKeyConstraint baseColumnNames="outlet_id" baseTableName="general_reports" constraintName="fk_grckamwrb5dvmtjhh8aso12e2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="outlets" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-42">
+        <addForeignKeyConstraint baseColumnNames="permission_id" baseTableName="roles_permissions" constraintName="fkbx9r9uw77p58gsq4mus0mec0o" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="permissions" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-43">
+        <addForeignKeyConstraint baseColumnNames="product_discount_id" baseTableName="items" constraintName="fkdso6etdvsuc22utj2v9tc3vjn" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="product_discounts" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-44">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="items" constraintName="fkmtk37pxnx7d5ck7fkq2xcna4i" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-45">
+        <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="orders_items" constraintName="fkij1wwgx6o198ubsx1oulpopem" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="orders" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-46">
+        <addForeignKeyConstraint baseColumnNames="items_id" baseTableName="orders_items" constraintName="fklbp1l1no3u5k9ry42w038iip7" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="items" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-47">
+        <addUniqueConstraint columnNames="items_id" constraintName="uk_7qrg5pfgjon82yhgwfqrdijm5" tableName="orders_items"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-48">
+        <addForeignKeyConstraint baseColumnNames="order_list_id" baseTableName="outlets_order_list" constraintName="fkjhkhbq27sqpqudnj9aaiasgmb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="orders" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-49">
+        <addForeignKeyConstraint baseColumnNames="outlet_id" baseTableName="outlets_order_list" constraintName="fkpofhydfhy86w5k7595au6ermc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="outlets" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-50">
+        <addUniqueConstraint columnNames="order_list_id" constraintName="uk_aogmprir6cv1aqnp2pcmqy69h" tableName="outlets_order_list"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-51">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_order_list" constraintName="fknrdv89evh3n8qqeswwk18wjp1" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-52">
+        <addForeignKeyConstraint baseColumnNames="order_list_id" baseTableName="users_order_list" constraintName="fkqflfdhh7x4iycoy16vhip9fl0" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="orders" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-53">
+        <addUniqueConstraint columnNames="order_list_id" constraintName="uk_phogm2rdafbnxdsc49celth7a" tableName="users_order_list"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-54">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="profiles_order_list" constraintName="fktdkpx4vr4nww7syhkrl449kbh" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="profiles" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-55">
+        <addUniqueConstraint columnNames="order_list_id" constraintName="uk_7a2us564kxk5kwkprj6mbs8ny" tableName="profiles_order_list"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-56">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="credentials" constraintName="fkn1uxbrheha9p3it25c3tsis6c" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-57">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="orders" constraintName="fk32ql8ubntj5uh44ph9659tiih" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-58">
+        <addForeignKeyConstraint baseColumnNames="ingredient_group_id" baseTableName="ingredients" constraintName="fkmsi46vt24vyrg2pm6apnm9tuf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="ingredient_groups" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-59">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="product_recipe_list" constraintName="fk7aiclusvbvmeko5tkpsswc76e" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-60">
+        <addForeignKeyConstraint baseColumnNames="outlet_id" baseTableName="users" constraintName="fkk1a3maf9u6v23qxae3pe3lbv9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="outlets" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-61">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="product_discounts" constraintName="fk569m0j2bdds7b29fmo0i9jmvl" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="products" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-62">
+        <addForeignKeyConstraint baseColumnNames="product_group_id" baseTableName="product_groups_product_list" constraintName="fkbqxnpnqbl0e7tkak2l2nn0cqy" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="product_groups" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-63">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="roles_permissions" constraintName="fkqi9odri6c1o81vjox54eedwyh" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-64">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="2" maxValue="9223372036854775807" minValue="1" sequenceName="credentials_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-65">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="discount_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-66">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="discount_proof_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-67">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="hibernate_sequence" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-68">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="ingredient_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-69">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="ingredient_group_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-70">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="item_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-71">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="order_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-72">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="outlet_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-73">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="permission_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-74">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="product_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-75">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="product_group_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-76">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="roles_generator" startValue="1"/>
+    </changeSet>
+    <changeSet author="Maximalus (generated)" id="1614531828840-77">
+        <createSequence cacheSize="1" cycle="false" dataType="bigint" incrementBy="1" maxValue="9223372036854775807" minValue="1" sequenceName="users_generator" startValue="1"/>
+    </changeSet>
+</databaseChangeLog>
