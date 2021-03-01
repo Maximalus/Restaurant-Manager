@@ -3,7 +3,7 @@ ALTER SEQUENCE ingredient_group_generator RESTART;
 INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Milk', false, current_timestamp, current_timestamp);
 INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Water', false, current_timestamp, current_timestamp);
 INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Spices', false, current_timestamp, current_timestamp);
-INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Juice', false, current_timestamp, current_timestamp);
+INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('ingredient_group_generator'), 'Juices', false, current_timestamp, current_timestamp);
 
 DELETE FROM ingredients;
 ALTER SEQUENCE ingredient_generator RESTART;

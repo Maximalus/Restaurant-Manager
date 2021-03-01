@@ -20,6 +20,7 @@ public class IngredientGroup {
     private String name;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(mappedBy = "ingredientGroup", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ingredient> ingredients = new ArrayList<>();

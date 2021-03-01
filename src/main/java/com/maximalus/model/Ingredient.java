@@ -2,6 +2,7 @@ package com.maximalus.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -49,6 +50,7 @@ public class Ingredient {
     private BigDecimal costPerUnit;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private IngredientGroup ingredientGroup;
 
