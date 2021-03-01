@@ -12,6 +12,7 @@
 	<artifactId>Restaurant-Manager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Restaurant-Manager</name>
+	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -24,7 +25,9 @@
 		<thymeleaf.extras.version>3.0.4.RELEASE</thymeleaf.extras.version>
 		<junit.version>5.7.1</junit.version>
 		<javax.validation.version>2.0.1.Final</javax.validation.version>
+		<spring.profiles.active>local,no-liquibase</spring.profiles.active>
 	</properties>
+
 
 	<dependencies>
 		<dependency>
