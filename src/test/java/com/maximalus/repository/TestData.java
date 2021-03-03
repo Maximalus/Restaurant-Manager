@@ -2,6 +2,7 @@ package com.maximalus.repository;
 
 import com.maximalus.model.Ingredient;
 import com.maximalus.model.IngredientGroup;
+import com.maximalus.model.Outlet;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -143,5 +144,71 @@ public class TestData {
 
         return Stream.of(ingredient, ingredient2,
                 ingredient3, ingredient4, ingredient5).collect(Collectors.toList());
+    }
+
+    public static Outlet getOutlet(){
+        Outlet outlet = new Outlet();
+        outlet.setId(7L);
+        outlet.setName("Sazeli");
+        outlet.setDeleted(false);
+        outlet.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        return outlet;
+    }
+
+    public static Outlet getOutletForUpdate(){
+        Outlet outlet = new Outlet();
+        outlet.setId(1L);
+        outlet.setName("Baladna farm");
+        outlet.setDeleted(false);
+        outlet.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        return outlet;
+    }
+
+    public static List<Outlet> getListOfOutlets(){
+        Outlet outlet = new Outlet();
+        outlet.setId(1L);
+        outlet.setName("Crystal");
+        outlet.setDeleted(false);
+        outlet.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+
+        Outlet outlet2 = new Outlet();
+        outlet2.setId(2L);
+        outlet2.setName("La Spiga");
+        outlet2.setDeleted(false);
+        outlet2.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet2.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+
+        Outlet outlet3 = new Outlet();
+        outlet3.setId(3L);
+        outlet3.setName("Market");
+        outlet3.setDeleted(false);
+        outlet3.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet3.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+
+        Outlet outlet4 = new Outlet();
+        outlet4.setId(4L);
+        outlet4.setName("Spice market");
+        outlet4.setDeleted(false);
+        outlet4.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet4.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+
+        Outlet outlet5 = new Outlet();
+        outlet5.setId(5L);
+        outlet5.setName("Wahm");
+        outlet5.setDeleted(false);
+        outlet5.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet5.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+
+        Outlet outlet6 = new Outlet();
+        outlet6.setId(6L);
+        outlet6.setName("W cafe");
+        outlet6.setDeleted(false);
+        outlet6.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+        outlet6.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
+
+        return Stream.of(outlet, outlet2, outlet3, outlet4, outlet5, outlet6).collect(Collectors.toList());
     }
 }

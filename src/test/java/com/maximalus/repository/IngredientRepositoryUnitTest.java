@@ -21,8 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ContextConfiguration(initializers = {IngredientRepositoryIntegrationTest.Initializer.class})
-public class IngredientRepositoryIntegrationTest {
+@ContextConfiguration(initializers = {IngredientRepositoryUnitTest.Initializer.class})
+public class IngredientRepositoryUnitTest {
     @Autowired
     private IngredientRepository ingredientRepository;
 
