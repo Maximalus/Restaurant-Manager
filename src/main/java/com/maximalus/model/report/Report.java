@@ -16,6 +16,7 @@ public abstract class Report {
     private Long id;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToOne(cascade = CascadeType.ALL)
     private Outlet outlet;
 

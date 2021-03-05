@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,11 +38,13 @@ public class Outlet {
     private LocalDateTime changingDate;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orderList = new ArrayList<>();
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany
     private List<User> userList = new ArrayList<>();

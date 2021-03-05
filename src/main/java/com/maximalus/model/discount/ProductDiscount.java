@@ -3,6 +3,7 @@ package com.maximalus.model.discount;
 import com.maximalus.model.Product;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,6 +28,7 @@ public class ProductDiscount{
     private String discountName;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToOne
     private Product product;
 
@@ -41,7 +43,6 @@ public class ProductDiscount{
 
     @Column(nullable = false)
     private LocalDateTime changingDate;
-
 
     @Column(nullable = false)
     private boolean isDeleted;

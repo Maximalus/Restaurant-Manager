@@ -5,6 +5,7 @@ import com.maximalus.model.discount.DiscountProof;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,16 +22,20 @@ public class Order {
     private Long id;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToMany
     private List<Item> items = new ArrayList<>();
 
+    @Min(value = 0, message = "Number of customers should be greater than 0")
     @Column(nullable = false)
     private int numberOfCustomers;
 
+    @Min(value = 0, message = "Number of table should be greater than 0")
     @Column(nullable = false)
     private int numberOfTable;
 
@@ -41,10 +46,12 @@ public class Order {
     private LocalDateTime changingDate;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToOne
     private CompanyDiscount companyDiscount;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToOne
     private DiscountProof discountProof;
 

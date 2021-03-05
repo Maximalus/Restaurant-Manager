@@ -20,6 +20,7 @@ public class ProductGroup {
     private String nameOfProductsGroup;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @Setter(AccessLevel.PRIVATE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> productList = new ArrayList<>();

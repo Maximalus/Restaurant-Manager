@@ -2,6 +2,7 @@ package com.maximalus.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +18,6 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Data
 @Entity
@@ -38,10 +38,12 @@ public class User {
     private Credential credential;
 
     @EqualsAndHashCode.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Outlet outlet;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToMany(cascade = CascadeType.MERGE)
     private List<Order> orderList = new ArrayList<>();
 

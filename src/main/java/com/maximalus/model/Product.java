@@ -30,6 +30,7 @@ public class Product {
     private int availableQuantity;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ElementCollection
     private List<Recipe> recipeList = new ArrayList<>();
 

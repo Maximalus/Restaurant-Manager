@@ -34,7 +34,6 @@ public class IngredientGroup {
     @Column(nullable = false)
     private LocalDateTime changingDate;
 
-
     public void addIngredient(Ingredient ingredient){
         ingredients.add(ingredient);
         ingredient.setIngredientGroup(this);

@@ -2,6 +2,7 @@ package com.maximalus.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,6 +29,7 @@ public class Permission {
     private String name;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "permissions")
     private Set<Role> roles = new HashSet<>();
 }

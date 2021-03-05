@@ -56,6 +56,4 @@ public class Ingredient {
 
     @Column(nullable = false)
     private boolean isDeleted;
-
-
 }

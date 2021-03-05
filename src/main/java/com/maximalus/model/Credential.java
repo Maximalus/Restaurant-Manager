@@ -3,6 +3,7 @@ package com.maximalus.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,7 +34,8 @@ public class Credential {
     private String password;
 
     @EqualsAndHashCode.Exclude
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Role role;
 
     @Column(nullable = false)

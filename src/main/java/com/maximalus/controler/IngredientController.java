@@ -31,7 +31,6 @@ public class IngredientController {
     @GetMapping(value = "/admin/createIngredient")
     public String createIngredient(Model model){
         model.addAttribute("ingredientDto", new IngredientDto());
-
         model.addAttribute("ingredientGroups", getListIngredientGroupNames());
         return "admin/manage/ingredient/createIngredient";
     }
@@ -42,6 +41,7 @@ public class IngredientController {
         if(bindingResult.hasErrors()){
             return "403";
         }
+
         Ingredient ingredient = IngredientDtoConverter.fromDto(ingredientDto);
         IngredientGroup ingredientGroup =
                 ingredientGroupService.findByName(ingredientDto.getIngredientGroupName());

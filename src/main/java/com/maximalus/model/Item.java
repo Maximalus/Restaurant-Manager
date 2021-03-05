@@ -3,6 +3,7 @@ package com.maximalus.model;
 import com.maximalus.model.discount.ProductDiscount;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,7 @@ public class Item {
     private Long id;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToOne
     private Product product;
 
@@ -32,9 +34,11 @@ public class Item {
     private int orderedAmount;
 
     @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @OneToOne
     private ProductDiscount productDiscount;
 
+    @Column(precision = 10, scale = 2)
     private BigDecimal totalCost;
 
     @Column(nullable = false)
@@ -45,5 +49,4 @@ public class Item {
 
     @Column(nullable = false)
     private LocalDateTime changingDate;
-
 }
