@@ -26,6 +26,7 @@
 		<junit.version>5.7.1</junit.version>
 		<javax.validation.version>2.0.1.Final</javax.validation.version>
 		<spring.profiles.active>local,no-liquibase</spring.profiles.active>
+		<hibernate.validator>7.0.1.Final</hibernate.validator>
 	</properties>
 
 
@@ -114,6 +115,11 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>${javax.validation.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
 	</dependencies>
 
