@@ -1,23 +1,23 @@
 package com.maximalus.service.impl;
 
-import com.maximalus.model.report.GeneralReport;
 import com.maximalus.model.Ingredient;
 import com.maximalus.model.Order;
+import com.maximalus.model.report.GeneralReport;
 import com.maximalus.model.report.SalesReport;
 import com.maximalus.repository.IngredientRepository;
 import com.maximalus.repository.OutletRepository;
 import com.maximalus.repository.ReportRepository;
 import com.maximalus.service.ReportService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
-@Transactional
 public class ReportServiceImpl implements ReportService {
     private ReportRepository reportRepository;
     private OutletRepository outletRepository;

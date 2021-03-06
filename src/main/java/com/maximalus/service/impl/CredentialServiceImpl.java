@@ -4,15 +4,15 @@ import com.maximalus.model.Credential;
 import com.maximalus.repository.CredentialRepository;
 import com.maximalus.service.CredentialService;
 import com.maximalus.service.RoleService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
-@Transactional
 public class CredentialServiceImpl implements CredentialService {
     @Autowired
     private CredentialRepository credentialRepository;
