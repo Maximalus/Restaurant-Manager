@@ -1,6 +1,6 @@
 package com.maximalus.model;
 
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
