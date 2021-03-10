@@ -1,5 +1,6 @@
 package com.maximalus.repository;
 
+import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.IngredientGroup;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -55,7 +56,9 @@ public class IngredientGroupRepositoryUnitTest {
     @Order(3)
     public void testFindByIdIngredientGroup(){
         IngredientGroup actualIngredientGroup = getIngredientGroup();
-        IngredientGroup expectedIngredientGroup = ingredientGroupRepository.findById(actualIngredientGroup.getId()).orElseThrow();
+        IngredientGroup expectedIngredientGroup =
+                ingredientGroupRepository.findById(actualIngredientGroup.getId())
+                        .orElseThrow(() -> new RestaurantManagerException(String.format("Ingredient group with %d does not exist", actualIngredientGroup.getId())));
 
         assertEquals(actualIngredientGroup, expectedIngredientGroup);
     }

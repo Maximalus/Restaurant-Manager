@@ -1,5 +1,6 @@
 package com.maximalus.repository;
 
+import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.Outlet;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -55,7 +56,8 @@ public class OutletRepositoryUnitTest {
     @Order(3)
     public void testFindByIdOutlet(){
         Outlet expectedOutlet = getOutlet();
-        Outlet actualOutlet = outletRepository.findById(expectedOutlet.getId()).orElseThrow();
+        Outlet actualOutlet = outletRepository.findById(expectedOutlet.getId())
+                .orElseThrow(() -> new RestaurantManagerException(String.format("Outlet with id $d does not exist", expectedOutlet.getId())));
 
         assertEquals(expectedOutlet, actualOutlet);
     }

@@ -1,5 +1,6 @@
 package com.maximalus.repository;
 
+import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.Ingredient;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -55,7 +56,10 @@ public class IngredientRepositoryUnitTest {
     @Order(3)
     public void testFindByIdIngredient(){
         Ingredient actualIngredient = getIngredient();
-        Ingredient expectedIngredient = ingredientRepository.findById(actualIngredient.getId()).orElseThrow();
+        Ingredient expectedIngredient = ingredientRepository
+                .findById(actualIngredient.getId())
+                .orElseThrow(() ->
+                        new RestaurantManagerException(String.format("Ingredient with id $d does not exist", actualIngredient.getId())));
 
         assertEquals(expectedIngredient, actualIngredient);
     }
