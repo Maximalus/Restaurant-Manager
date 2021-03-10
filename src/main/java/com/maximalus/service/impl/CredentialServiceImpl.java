@@ -1,9 +1,11 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.Credential;
 import com.maximalus.repository.CredentialRepository;
 import com.maximalus.service.CredentialService;
 import com.maximalus.service.RoleService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,12 +15,10 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class CredentialServiceImpl implements CredentialService {
-    @Autowired
     private CredentialRepository credentialRepository;
-    @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
     private RoleService roleService;
 
     @Override
@@ -31,6 +31,7 @@ public class CredentialServiceImpl implements CredentialService {
 
     @Override
     public Credential findByUsername(String username){
-        return credentialRepository.findByUsername(username).orElseThrow();
+        return credentialRepository.findByUsername(username)
+                .orElseThrow(() -> new RestaurantManagerException(String.format("User with username $s does not exist", username)));
     }
 }

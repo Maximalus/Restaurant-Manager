@@ -1,5 +1,6 @@
 package com.maximalus.security;
 
+import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.Credential;
 import com.maximalus.repository.CredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Credential credential = credentialRepository.findByUsername(username).orElseThrow();
+        Credential credential = credentialRepository.findByUsername(username).orElseThrow(() -> new RestaurantManagerException(String.format("User with username %s does not exist", username)));
         return CredentialSecurity.fromUser(credential);
     }
 }

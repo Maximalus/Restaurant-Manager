@@ -1,18 +1,19 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.IngredientGroup;
 import com.maximalus.repository.IngredientGroupRepository;
 import com.maximalus.service.IngredientGroupService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class IngredientGroupServiceImpl implements IngredientGroupService {
-    @Autowired
     private IngredientGroupRepository ingredientGroupRepository;
 
     public IngredientGroup save(IngredientGroup ingredientGroup){
@@ -20,7 +21,8 @@ public class IngredientGroupServiceImpl implements IngredientGroupService {
     }
 
     public IngredientGroup findById(Long id){
-        return ingredientGroupRepository.findById(id).orElseThrow();
+        return ingredientGroupRepository.findById(id)
+                .orElseThrow(() -> new RestaurantManagerException(String.format("Ingredient group with id $s does not exist", id)));
     }
 
     public IngredientGroup findByName(String name){

@@ -4,12 +4,10 @@ import com.maximalus.model.Ingredient;
 import com.maximalus.model.Order;
 import com.maximalus.model.report.GeneralReport;
 import com.maximalus.model.report.SalesReport;
-import com.maximalus.repository.IngredientRepository;
-import com.maximalus.repository.OutletRepository;
 import com.maximalus.repository.ReportRepository;
 import com.maximalus.service.ReportService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -18,27 +16,21 @@ import java.util.List;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class ReportServiceImpl implements ReportService {
     private ReportRepository reportRepository;
-    private OutletRepository outletRepository;
-    private IngredientRepository ingredientRepository;
+    private OutletServiceImpl outletService;
+    private IngredientServiceImpl ingredientService;
 
     private List<Order> orderList = new ArrayList<>();
     private List<Ingredient> ingredientList = new ArrayList<>();
-
-    @Autowired
-    public ReportServiceImpl(ReportRepository reportRepository, OutletRepository outletRepository, IngredientRepository ingredientRepository) {
-        this.reportRepository = reportRepository;
-        this.outletRepository = outletRepository;
-        this.ingredientRepository = ingredientRepository;
-    }
 
     public void save(GeneralReport generalReport, long outletId){
         getAllOrders(outletId);
         int numberOfCustomers = getNumberOfCustomers(orderList);
         int numberOfOrders = getNumberOfOrders(orderList);
         int numberOfUnPaidOrders = getNumberOfUnPaidOrders(orderList);
-        generalReport.setOutlet(outletRepository.findById(outletId).orElseThrow());
+        generalReport.setOutlet(outletService.findById(outletId));
         generalReport.setNumberOfCustomers(numberOfCustomers);
         generalReport.setNumberOfOrders(numberOfOrders);
         generalReport.setNumberOfUnpaidOrders(numberOfUnPaidOrders);
@@ -61,11 +53,11 @@ public class ReportServiceImpl implements ReportService {
     }
 
     private void getAllOrders(long outletId){
-        orderList = outletRepository.getAllById(outletId);
+        orderList = outletService.getAllOrdersByOutletId(outletId);
     }
 
     private void getAllIngredients(){
-        ingredientList = (List<Ingredient>) ingredientRepository.findAll();
+        ingredientList = (List<Ingredient>) ingredientService.findAll();
     }
 
     private int getNumberOfPaidOrders(List<Order> orderList){
