@@ -11,6 +11,7 @@ import com.maximalus.service.impl.CredentialServiceImpl;
 import com.maximalus.service.impl.OutletServiceImpl;
 import com.maximalus.service.impl.RoleServiceImpl;
 import com.maximalus.service.impl.UserServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -26,14 +27,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
+@AllArgsConstructor
 public class UserController {
-    @Autowired
     private UserServiceImpl userService;
-    @Autowired
     private RoleServiceImpl roleService;
-    @Autowired
     private OutletServiceImpl outletService;
-    @Autowired
     private CredentialServiceImpl credentialService;
 
     @GetMapping("/admin/admin")

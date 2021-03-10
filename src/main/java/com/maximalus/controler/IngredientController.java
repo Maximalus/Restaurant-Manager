@@ -6,6 +6,7 @@ import com.maximalus.model.Ingredient;
 import com.maximalus.model.IngredientGroup;
 import com.maximalus.service.impl.IngredientGroupServiceImpl;
 import com.maximalus.service.impl.IngredientServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +23,9 @@ import java.util.stream.Collectors;
 
 
 @Controller
+@AllArgsConstructor
 public class IngredientController {
-    @Autowired
     private IngredientServiceImpl ingredientService;
-    @Autowired
     public IngredientGroupServiceImpl ingredientGroupService;
 
     @GetMapping(value = "/admin/createIngredient")
