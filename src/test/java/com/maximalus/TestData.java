@@ -1,4 +1,4 @@
-package com.maximalus.repository;
+package com.maximalus;
 
 import com.maximalus.model.Ingredient;
 import com.maximalus.model.IngredientGroup;
@@ -60,8 +60,8 @@ public class TestData {
 
     public static Ingredient getIngredient(){
         Ingredient ingredient = new Ingredient();
-        ingredient.setId(6L);
-        ingredient.setName("Watermelon juice");
+        ingredient.setId(1L);
+        ingredient.setName("Grapefruit juice");
         ingredient.setCostPerUnit(BigDecimal.valueOf(12.00).setScale(2));
         ingredient.setInitialQuantity(BigDecimal.valueOf(2000).setScale(2));
         ingredient.setCurrentQuantity(BigDecimal.valueOf(1980).setScale(2));

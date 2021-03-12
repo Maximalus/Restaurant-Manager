@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class IngredientServiceImpl implements IngredientService {
-    private IngredientRepository ingredientRepository;
+    private final IngredientRepository ingredientRepository;
 
     public Ingredient save(Ingredient ingredient){
         return ingredientRepository.save(ingredient);
