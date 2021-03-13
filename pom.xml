@@ -27,7 +27,6 @@
 		<hibernate.validator>7.0.1.Final</hibernate.validator>
 	</properties>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -113,7 +112,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 
 </project>
