@@ -4,7 +4,6 @@ import com.maximalus.dto.IngredientDto;
 import com.maximalus.model.Ingredient;
 import com.maximalus.model.storage.Storage;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class IngredientDtoConverter {
