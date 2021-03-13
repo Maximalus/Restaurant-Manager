@@ -4,8 +4,10 @@ import com.maximalus.dto.IngredientDto;
 import com.maximalus.dto.converter.IngredientDtoConverter;
 import com.maximalus.model.Ingredient;
 import com.maximalus.model.IngredientGroup;
+import com.maximalus.model.storage.Storage;
 import com.maximalus.service.impl.IngredientGroupServiceImpl;
 import com.maximalus.service.impl.IngredientServiceImpl;
+import com.maximalus.service.impl.StorageServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +26,9 @@ import java.util.stream.Collectors;
 @Controller
 @AllArgsConstructor
 public class IngredientController {
-    private IngredientServiceImpl ingredientService;
-    public IngredientGroupServiceImpl ingredientGroupService;
+    private final IngredientServiceImpl ingredientService;
+    private final IngredientGroupServiceImpl ingredientGroupService;
+    private final StorageServiceImpl storageService;
 
     @GetMapping(value = "/admin/createIngredient")
     public String createIngredient(Model model){
@@ -51,9 +54,9 @@ public class IngredientController {
 
     @GetMapping(value = "/admin/allIngredients")
     public String allIngredients(Model model){
-        List<IngredientDto> ingredients = ingredientService.findAll().stream()
+        List<Ingredient> ingredients = storageService.findAll().stream()
+                .map(Storage::getIngredient)
                 .filter(ingredient -> !ingredient.isDeleted())
-                .map(IngredientDtoConverter::toDto)
                 .collect(Collectors.toList());
         model.addAttribute("ingredients", ingredients);
         return "admin/manage/ingredient/allIngredients";
@@ -63,8 +66,8 @@ public class IngredientController {
     public String editIngredient(Model model, @RequestParam String id){
         Long ingredientId = Long.parseLong(id);
         Ingredient ingredient = ingredientService.findById(ingredientId);
-        IngredientDto ingredientDto = IngredientDtoConverter.toDto(ingredient);
-        model.addAttribute("ingredientDto", ingredientDto);
+//        IngredientDto ingredientDto = IngredientDtoConverter.toDto(ingredient);
+//        model.addAttribute("ingredientDto", ingredientDto);
         model.addAttribute("ingredientGroups", getListIngredientGroupNames());
         return "admin/manage/ingredient/editIngredient";
     }
@@ -78,7 +81,7 @@ public class IngredientController {
 
         Ingredient ingredient = ingredientService.findById(ingredientDto.getId());
         ingredient.setName(ingredientDto.getName());
-        ingredient.setUnitName(ingredientDto.getNameOfUnit());
+//        ingredient.setUnitName(ingredientDto.getNameOfUnit());
         ingredient.setChangingDate(LocalDateTime.now());
 
         IngredientGroup ingredientGroup =

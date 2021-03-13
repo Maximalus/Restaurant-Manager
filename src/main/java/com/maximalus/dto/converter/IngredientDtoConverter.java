@@ -2,6 +2,7 @@ package com.maximalus.dto.converter;
 
 import com.maximalus.dto.IngredientDto;
 import com.maximalus.model.Ingredient;
+import com.maximalus.model.storage.Storage;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,32 +11,23 @@ public class IngredientDtoConverter {
     public static Ingredient fromDto(IngredientDto ingredientDto){
         Ingredient ingredient = new Ingredient();
         ingredient.setName(ingredientDto.getName());
-
-        String costPerUnit = ingredientDto.getCostPerUnit();
-        Long parseLong = Long.parseLong(costPerUnit);
-
-        ingredient.setCostPerUnit(BigDecimal.valueOf(parseLong));
-        ingredient.setCurrentQuantity(BigDecimal.ZERO);
-        ingredient.setInitialQuantity(BigDecimal.ZERO);
-        ingredient.setUnitName(ingredientDto.getNameOfUnit());
         ingredient.setCreationDate(LocalDateTime.now());
         ingredient.setChangingDate(LocalDateTime.now());
-        ingredient.setTotalPrice(BigDecimal.ZERO);
         return ingredient;
     }
 
-    public static IngredientDto toDto(Ingredient ingredient){
+    public static IngredientDto toDto(Storage storage){
         IngredientDto ingredientDto = new IngredientDto();
-        ingredientDto.setId(ingredient.getId());
-        ingredientDto.setName(ingredient.getName());
-        ingredientDto.setNameOfUnit(ingredient.getUnitName());
-        ingredientDto.setIngredientGroupName(ingredient.getIngredientGroup().getName());
-        ingredientDto.setCreationDate(ingredient.getCreationDate());
-        ingredientDto.setChangingDate(ingredient.getChangingDate());
-        ingredientDto.setTotalPrice(ingredient.getTotalPrice().toString());
-        ingredientDto.setCostPerUnit(ingredient.getCostPerUnit().toString());
-        ingredientDto.setCurrentQuantity(ingredient.getCurrentQuantity().toString());
-        ingredientDto.setInitialQuantity(ingredient.getInitialQuantity().toString());
+        ingredientDto.setId(storage.getIngredient().getId());
+        ingredientDto.setName(storage.getIngredient().getName());
+        ingredientDto.setNameOfUnit(storage.getUnitName());
+        ingredientDto.setIngredientGroupName(storage.getIngredient().getIngredientGroup().getName());
+        ingredientDto.setCreationDate(storage.getIngredient().getCreationDate());
+        ingredientDto.setChangingDate(storage.getIngredient().getChangingDate());
+        ingredientDto.setTotalPrice(storage.getTotalPrice().toString());
+        ingredientDto.setCostPerUnit(storage.getCostPerUnit().toString());
+        ingredientDto.setCurrentQuantity(storage.getCurrentQuantity().toString());
+        ingredientDto.setInitialQuantity(storage.getInitialQuantity().toString());
         return ingredientDto;
     }
 }

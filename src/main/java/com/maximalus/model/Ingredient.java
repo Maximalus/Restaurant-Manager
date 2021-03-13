@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -28,26 +27,11 @@ public class Ingredient {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal currentQuantity;
-
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal initialQuantity;
-
-    @Column(nullable = false)
-    private String unitName;
-
-    @Column(precision = 10, scale = 2)
-    private BigDecimal totalPrice;
-
     @Column(nullable = false)
     private LocalDateTime creationDate;
 
     @Column(nullable = false)
     private LocalDateTime changingDate;
-
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal costPerUnit;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
