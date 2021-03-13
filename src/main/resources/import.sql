@@ -7,11 +7,11 @@ INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_dat
 
 DELETE FROM ingredients;
 ALTER SEQUENCE ingredient_generator RESTART;
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Orange juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Apple juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Pineapple juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, current_quantity, initial_quantity, total_price, cost_per_unit, unit_name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Mango juice', 1980, 2000, 24000, 12, 'Liter', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Orange juice', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Apple juice', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Pineapple juice', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Mango juice', false, 4, current_timestamp, current_timestamp);
 
 DELETE FROM outlets;
 ALTER SEQUENCE outlet_generator RESTART;
