@@ -42,13 +42,13 @@ public class ReportServiceImpl implements ReportService {
         getAllIngredients();
         int numberOfPaidOrders = getNumberOfPaidOrders(orderList);
         int numberOfUnPaidOrders = getNumberOfUnPaidOrders(orderList);
-        BigDecimal costOfIngredients = getCostOfIngredients(ingredientList);
+//        BigDecimal costOfIngredients = getCostOfIngredients(ingredientList);
         BigDecimal totalSales = getTotalSales(orderList);
         salesReport.setNumberOfPaidOrders(numberOfPaidOrders);
         salesReport.setNumberOfUnPaidOrders(numberOfUnPaidOrders);
-        salesReport.setCostOfIngredients(costOfIngredients);
+//        salesReport.setCostOfIngredients(costOfIngredients);
         salesReport.setTotalSales(totalSales);
-        salesReport.setTotalRevenue(totalSales.subtract(costOfIngredients));
+//        salesReport.setTotalRevenue(totalSales.subtract(costOfIngredients));
         reportRepository.save(salesReport);
     }
 
@@ -76,9 +76,9 @@ public class ReportServiceImpl implements ReportService {
         return orderList.stream().mapToInt(Order::getNumberOfCustomers).reduce(Integer::sum).orElse(0);
     }
 
-    private BigDecimal getCostOfIngredients(List<Ingredient> ingredientList){
-        return ingredientList.stream().map(Ingredient::getTotalPrice).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
-    }
+//    private BigDecimal getCostOfIngredients(List<Ingredient> ingredientList){
+//        return ingredientList.stream().map(Ingredient::getTotalPrice).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+//    }
 
     private BigDecimal getTotalSales(List<Order> orderList){
         return orderList.stream().map(Order::getTotalCost).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
