@@ -45,5 +45,4 @@ public class ProductGroup {
 
     @Column(nullable = false)
     private LocalDateTime changingDate;
-
 }

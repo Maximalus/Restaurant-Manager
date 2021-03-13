@@ -4,13 +4,14 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @Data
 @Embeddable
 public class Recipe {
-    @OneToOne
+    @ManyToOne
     private Ingredient ingredient;
 
     @Column(nullable = false)
@@ -24,5 +25,4 @@ public class Recipe {
 
     @Column(nullable = false)
     private LocalDateTime changingDate;
-
 }
