@@ -2,6 +2,7 @@ package com.maximalus.model;
 
 import com.maximalus.model.discount.CompanyDiscount;
 import com.maximalus.model.discount.DiscountProof;
+import com.maximalus.model.product.item.OrderItem;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -23,7 +24,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Data
 @Entity
@@ -49,7 +49,7 @@ public class Order {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(mappedBy = "order")
-    private List<Item> items = new ArrayList<>();
+    private List<OrderItem> items = new ArrayList<>();
 
     @Min(value = 0, message = "Number of customers should be greater than 0")
     @Column(nullable = false)

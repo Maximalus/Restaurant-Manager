@@ -1,6 +1,6 @@
 package com.maximalus.repository;
 
-import com.maximalus.model.Ingredient;
+import com.maximalus.model.product.ingredient.Ingredient;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

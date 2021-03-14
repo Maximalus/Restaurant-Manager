@@ -1,6 +1,6 @@
 package com.maximalus.service.impl;
 
-import com.maximalus.model.Ingredient;
+import com.maximalus.model.product.ingredient.Ingredient;
 import com.maximalus.model.Order;
 import com.maximalus.model.report.GeneralReport;
 import com.maximalus.model.report.SalesReport;

@@ -1,6 +1,6 @@
 package com.maximalus.model;
 
-import com.maximalus.model.storage.Storage;
+import com.maximalus.model.storage.IngredientStorage;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -54,7 +54,7 @@ public class Outlet {
 
     @ManyToOne
     @JoinColumn(name = "storage_id")
-    private Storage storage;
+    private IngredientStorage ingredientStorage;
 
     @Column(nullable = false)
     private boolean isDeleted;

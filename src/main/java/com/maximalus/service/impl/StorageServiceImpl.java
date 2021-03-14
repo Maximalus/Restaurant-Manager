@@ -1,7 +1,7 @@
 package com.maximalus.service.impl;
 
 import com.maximalus.exception.RestaurantManagerException;
-import com.maximalus.model.storage.Storage;
+import com.maximalus.model.storage.IngredientStorage;
 import com.maximalus.repository.StorageRepository;
 import com.maximalus.service.StorageService;
 import lombok.AllArgsConstructor;
@@ -15,22 +15,22 @@ public class StorageServiceImpl implements StorageService {
     private final StorageRepository storageRepository;
 
     @Override
-    public void save(Storage storage) {
-        storageRepository.save(storage);
+    public void save(IngredientStorage ingredientStorage) {
+        storageRepository.save(ingredientStorage);
     }
 
     @Override
-    public void update(Storage storage) {
-        storageRepository.save(storage);
+    public void update(IngredientStorage ingredientStorage) {
+        storageRepository.save(ingredientStorage);
     }
 
     @Override
-    public List<Storage> findAll() {
-        return (List<Storage>) storageRepository.findAll();
+    public List<IngredientStorage> findAll() {
+        return (List<IngredientStorage>) storageRepository.findAll();
     }
 
     @Override
-    public Storage findById(Long id) {
+    public IngredientStorage findById(Long id) {
         return storageRepository
                 .findById(id)
                 .orElseThrow(() ->

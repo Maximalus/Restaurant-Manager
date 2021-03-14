@@ -1,6 +1,6 @@
 package com.maximalus.service;
 
-import com.maximalus.model.IngredientGroup;
+import com.maximalus.model.product.ingredient.IngredientGroup;
 
 import java.util.List;
 

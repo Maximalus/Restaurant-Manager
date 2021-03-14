@@ -2,9 +2,9 @@ package com.maximalus.controler;
 
 import com.maximalus.dto.IngredientDto;
 import com.maximalus.dto.converter.IngredientDtoConverter;
-import com.maximalus.model.Ingredient;
-import com.maximalus.model.IngredientGroup;
-import com.maximalus.model.storage.Storage;
+import com.maximalus.model.product.ingredient.Ingredient;
+import com.maximalus.model.product.ingredient.IngredientGroup;
+import com.maximalus.model.storage.IngredientStorage;
 import com.maximalus.service.impl.IngredientGroupServiceImpl;
 import com.maximalus.service.impl.IngredientServiceImpl;
 import com.maximalus.service.impl.StorageServiceImpl;
@@ -54,7 +54,7 @@ public class IngredientController {
     @GetMapping(value = "/admin/allIngredients")
     public String allIngredients(Model model){
         List<Ingredient> ingredients = storageService.findAll().stream()
-                .map(Storage::getIngredient)
+                .map(IngredientStorage::getIngredient)
                 .filter(ingredient -> !ingredient.isDeleted())
                 .collect(Collectors.toList());
         model.addAttribute("ingredients", ingredients);
