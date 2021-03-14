@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
@@ -23,7 +24,8 @@ import java.time.LocalDateTime;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Report {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_generator")
+    @SequenceGenerator(allocationSize = 1, name = "report_generator")
     private Long id;
 
     @EqualsAndHashCode.Exclude
