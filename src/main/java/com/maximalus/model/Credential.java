@@ -21,10 +21,9 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "credentials")
 public class Credential {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credentials_generator")
-    @SequenceGenerator(allocationSize = 2, name = "credentials_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credential_generator")
+    @SequenceGenerator(allocationSize = 2, name = "credential_generator")
     private Long id;
 
     @Column(nullable = false)
