@@ -1,6 +1,6 @@
 package com.maximalus.model.storage;
 
-import com.maximalus.model.Ingredient;
+import com.maximalus.model.product.ingredient.Ingredient;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -17,11 +17,11 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "storage_ingredient")
-public class Storage {
+@Table(name = "ingredient_storage")
+public class IngredientStorage {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "storage_ingredient_generator")
-    @SequenceGenerator(allocationSize = 1, name = "storage_ingredient_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_storage_generator")
+    @SequenceGenerator(allocationSize = 1, name = "ingredient_storage_generator")
     private Long id;
 
     @ManyToOne

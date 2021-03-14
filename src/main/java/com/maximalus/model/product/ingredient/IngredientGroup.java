@@ -1,4 +1,4 @@
-package com.maximalus.model;
+package com.maximalus.model.product.ingredient;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -51,8 +51,7 @@ public class IngredientGroup {
         ingredient.setIngredientGroup(this);
     }
 
-    public void removeIngredient(Ingredient ingredient){
-        ingredients.remove(ingredient);
-        ingredient.setIngredientGroup(null);
+    public void deleteIngredient(Ingredient ingredient){
+        ingredient.setDeleted(true);
     }
 }
