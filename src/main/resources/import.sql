@@ -7,11 +7,11 @@ INSERT INTO ingredient_groups (id, name, is_deleted, creation_date, changing_dat
 
 DELETE FROM ingredients;
 ALTER SEQUENCE ingredient_generator RESTART;
-INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Orange juice', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Apple juice', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Pineapple juice', false, 4, current_timestamp, current_timestamp);
-INSERT INTO ingredients (id, name, is_deleted, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Mango juice', false, 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, unit_name, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Grapefruit juice', false, 'Liter', 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, unit_name, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Orange juice', false, 'Liter', 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, unit_name, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Apple juice', false, 'Liter', 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, unit_name, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Pineapple juice', false, 'Liter', 4, current_timestamp, current_timestamp);
+INSERT INTO ingredients (id, name, is_deleted, unit_name, ingredient_group_id, creation_date, changing_date) VALUES (nextval('ingredient_generator'), 'Mango juice', false, 'Liter', 4, current_timestamp, current_timestamp);
 
 DELETE FROM outlets;
 ALTER SEQUENCE outlet_generator RESTART;
@@ -53,3 +53,6 @@ INSERT INTO roles_permissions (role_id, permission_id) VALUES (1,2);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,1);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,5);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,6);
+
+DELETE FROM credentials;
+INSERT INTO credentials (id, changing_date, creation_date, is_deleted, password, username, role_id) VALUES (nextval('credential_generator'), current_timestamp, current_timestamp, false, '1', 'Maximalys', 1);
