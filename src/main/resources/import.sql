@@ -53,6 +53,3 @@ INSERT INTO roles_permissions (role_id, permission_id) VALUES (1,2);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,1);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,5);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (3,6);
-
-DELETE FROM credentials;
-INSERT INTO credentials (id, changing_date, creation_date, is_deleted, password, username, role_id) VALUES (nextval('credential_generator'), current_timestamp, current_timestamp, false, '1', 'Maximalys', 1);

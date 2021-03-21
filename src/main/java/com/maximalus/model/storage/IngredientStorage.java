@@ -2,6 +2,8 @@ package com.maximalus.model.storage;
 
 import com.maximalus.model.product.ingredient.Ingredient;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +33,8 @@ public class IngredientStorage {
     @Column(nullable = false)
     private String unitName;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "storage_type_id")
     private StorageType storageType;

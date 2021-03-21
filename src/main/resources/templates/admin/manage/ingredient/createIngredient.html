@@ -26,10 +26,6 @@
     <input th:type="text" th:field="*{name}" th:id="name" autofocus="autofocus">
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br>
 
-    <label th:for="costPerUnit">Ціна за одиницю товару</label>
-    <input th:type="number" th:field="*{costPerUnit}" th:id="costPerUnit" autofocus="autofocus">
-    <span th:if="${#fields.hasErrors('costPerUnit')}" th:errors="*{costPerUnit}"></span><br>
-
     <label th:for="nameOfUnit">Одиниця вимірювання товару</label>
     <input th:type="text" th:field="*{nameOfUnit}" th:id="nameOfUnit" autofocus="autofocus">
     <span th:if="${#fields.hasErrors('nameOfUnit')}" th:errors="*{nameOfUnit}"></span><br>
