@@ -12,7 +12,7 @@
 	<artifactId>Restaurant-Manager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Restaurant-Manager</name>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -22,6 +22,8 @@
 		<thymeleaf.extras.version>3.0.4.RELEASE</thymeleaf.extras.version>
 		<junit.version>5.7.1</junit.version>
 		<mockito.version>3.8.0</mockito.version>
+		<jackson.version>2.12.1</jackson.version>
+		<jsonwebtoken.version>0.9.1</jsonwebtoken.version>
 		<javax.validation.version>2.0.1.Final</javax.validation.version>
 		<spring.profiles.active>local,no-liquibase</spring.profiles.active>
 		<hibernate.validator>7.0.1.Final</hibernate.validator>
@@ -41,24 +43,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!--	Json converters	-->
 		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${jsonwebtoken.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
-			<version>${thymeleaf.extras.version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 
 		<dependency>
@@ -77,6 +71,13 @@
 			<artifactId>liquibase-core</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${javax.validation.version}</version>
+		</dependency>
+
+        <!--	Tests	-->
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -91,11 +92,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>${javax.validation.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>

@@ -1,8 +1,7 @@
-package com.maximalus.model;
+package com.maximalus.model.product.ingredient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.CascadeType;
@@ -11,31 +10,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
 @Entity
-@Table(name = "credentials")
-public class Credential {
+@Table(name="ingredients")
+public class Ingredient {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "credential_generator")
-    @SequenceGenerator(allocationSize = 2, name = "credential_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ingredient_generator")
+    @SequenceGenerator(allocationSize = 1, name = "ingredient_generator")
     private Long id;
 
     @Column(nullable = false)
-    private String username;
+    private String name;
 
     @Column(nullable = false)
-    private String password;
-
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    @ManyToOne(cascade = {CascadeType.MERGE})
-    private Role role;
+    private String unitName;
 
     @Column(nullable = false)
     private LocalDateTime creationDate;
@@ -43,12 +37,12 @@ public class Credential {
     @Column(nullable = false)
     private LocalDateTime changingDate;
 
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="ingredient_group_id")
+    private IngredientGroup ingredientGroup;
+
     @Column(nullable = false)
     private boolean isDeleted;
-
-    public Credential(String username, String password, Role role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
 }

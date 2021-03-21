@@ -26,8 +26,8 @@ import java.util.stream.Collectors;
 @Table(name="roles")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roles_generator")
-    @SequenceGenerator(allocationSize = 1, name = "roles_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_generator")
+    @SequenceGenerator(allocationSize = 1, name = "role_generator")
     private Long id;
 
     @Column(nullable = false)

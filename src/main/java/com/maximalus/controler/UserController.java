@@ -12,7 +12,6 @@ import com.maximalus.service.impl.OutletServiceImpl;
 import com.maximalus.service.impl.RoleServiceImpl;
 import com.maximalus.service.impl.UserServiceImpl;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

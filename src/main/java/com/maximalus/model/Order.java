@@ -2,6 +2,7 @@ package com.maximalus.model;
 
 import com.maximalus.model.discount.CompanyDiscount;
 import com.maximalus.model.discount.DiscountProof;
+import com.maximalus.model.product.item.OrderItem;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -12,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,7 +24,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Data
 @Entity
@@ -36,12 +37,19 @@ public class Order {
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany
-    private List<Item> items = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "outlet_id")
+    private Outlet outlet;
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "order")
+    private List<OrderItem> items = new ArrayList<>();
 
     @Min(value = 0, message = "Number of customers should be greater than 0")
     @Column(nullable = false)

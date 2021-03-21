@@ -1,7 +1,7 @@
 package com.maximalus.service.impl;
 
 import com.maximalus.exception.RestaurantManagerException;
-import com.maximalus.model.IngredientGroup;
+import com.maximalus.model.product.ingredient.IngredientGroup;
 import com.maximalus.repository.IngredientGroupRepository;
 import com.maximalus.service.IngredientGroupService;
 import lombok.AllArgsConstructor;

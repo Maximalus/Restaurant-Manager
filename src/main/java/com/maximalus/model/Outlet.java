@@ -1,5 +1,6 @@
 package com.maximalus.model;
 
+import com.maximalus.model.storage.IngredientStorage;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -48,6 +51,10 @@ public class Outlet {
     @Setter(AccessLevel.PRIVATE)
     @OneToMany
     private List<User> userList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "storage_id")
+    private IngredientStorage ingredientStorage;
 
     @Column(nullable = false)
     private boolean isDeleted;

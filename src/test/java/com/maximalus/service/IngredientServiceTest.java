@@ -1,7 +1,7 @@
 package com.maximalus.service;
 
 import com.maximalus.TestData;
-import com.maximalus.model.Ingredient;
+import com.maximalus.model.product.ingredient.Ingredient;
 import com.maximalus.repository.IngredientRepository;
 import com.maximalus.service.impl.IngredientServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -18,7 +18,7 @@ public class IngredientServiceTest {
     private IngredientServiceImpl ingredientService = new IngredientServiceImpl(ingredientRepository);
 
     @Test
-    public void getAllIngredients(){
+    public void findAllIngredients(){
         when(ingredientRepository.findAll()).thenReturn(TestData.getListOfIngredients());
 
         List<Ingredient> actual = ingredientService.findAll();
@@ -28,7 +28,7 @@ public class IngredientServiceTest {
     }
 
     @Test
-    public void getIngredient(){
+    public void findIngredientById(){
         when(ingredientRepository.findById(6L)).thenReturn(Optional.of(TestData.getIngredient()));
 
         Ingredient actual = ingredientService.findById(6L);
@@ -56,4 +56,6 @@ public class IngredientServiceTest {
 
         assertEquals(expected, actual);
     }
+
+
 }

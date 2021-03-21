@@ -8,7 +8,6 @@ public class CredentialDtoConverter {
         Credential credential = new Credential();
         credential.setUsername(userDto.getEmail());
         credential.setPassword(userDto.getPassword());
-        credential.setDeleted(false);
         return credential;
     }
 }
