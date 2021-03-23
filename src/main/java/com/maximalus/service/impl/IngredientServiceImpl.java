@@ -6,6 +6,8 @@ import com.maximalus.repository.IngredientRepository;
 import com.maximalus.service.IngredientService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,6 +30,11 @@ public class IngredientServiceImpl implements IngredientService {
 
     public List<Ingredient> findAll(){
         return (List<Ingredient>) ingredientRepository.findAll();
+    }
+
+    @Override
+    public Page<Ingredient> findAll(Pageable pageable) {
+        return ingredientRepository.findAll(pageable);
     }
 
     public Ingredient update(Ingredient ingredient){

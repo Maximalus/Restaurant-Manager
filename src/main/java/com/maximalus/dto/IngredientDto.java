@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class IngredientDto {
     private Long id;
     private String name;
-    private String nameOfUnit;
+    private String unitName;
     private String ingredientGroupName;
     private LocalDateTime creationDate;
     private LocalDateTime changingDate;
