@@ -92,7 +92,13 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
-        <!--	Tests	-->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+
+		<!--	Tests	-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
