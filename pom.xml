@@ -28,7 +28,7 @@
 		<spring.profiles.active>local,no-liquibase</spring.profiles.active>
 		<hibernate.validator>7.0.1.Final</hibernate.validator>
 		<io-rest-assured.version>4.3.2</io-rest-assured.version>
-		<groovy.version>3.0.2</groovy.version>
+		<groovy.version>3.0.8</groovy.version>
 	</properties>
 
 	<dependencies>
