@@ -8,6 +8,7 @@ public interface IngredientGroupService {
     IngredientGroup findById(Long id);
     IngredientGroup findByName(String name);
     List<IngredientGroup> findAll();
+    IngredientGroup save(IngredientGroup ingredientGroup);
     IngredientGroup update(IngredientGroup ingredientGroup);
     void deleteById(Long id);
 }

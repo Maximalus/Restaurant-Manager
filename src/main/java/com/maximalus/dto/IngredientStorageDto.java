@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class IngredientStorageDto {
+    private Long id;
     private String nameOfIngredient;
     private BigDecimal costPerUnit;
     private String ingredientGroupName;
