@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -42,7 +43,10 @@ public class IngredientServiceImpl implements IngredientService {
     }
 
     public void deleteById(Long id){
-        ingredientRepository.deleteById(id);
+        Ingredient ingredient = findById(id);
+        ingredient.setDeleted(true);
+        ingredient.setChangingDate(LocalDateTime.now());
+        update(ingredient);
     }
 
 }

@@ -4,8 +4,8 @@ import com.maximalus.dto.IngredientDto;
 import com.maximalus.dto.converter.IngredientDtoConverter;
 import com.maximalus.model.product.ingredient.Ingredient;
 import com.maximalus.model.product.ingredient.IngredientGroup;
-import com.maximalus.service.impl.IngredientGroupServiceImpl;
-import com.maximalus.service.impl.IngredientServiceImpl;
+import com.maximalus.service.IngredientGroupService;
+import com.maximalus.service.IngredientService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/ingredients")
 @AllArgsConstructor
 public class IngredientController {
-    private final IngredientServiceImpl ingredientService;
-    private final IngredientGroupServiceImpl ingredientGroupService;
+    private final IngredientService ingredientService;
+    private final IngredientGroupService ingredientGroupService;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public IngredientDto getIngredientById(@PathVariable Long id){
@@ -60,7 +60,8 @@ public class IngredientController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Ingredient updateIngredient(@PathVariable Long id, @RequestBody IngredientDto ingredientDto){
+    public Ingredient updateIngredient(@PathVariable Long id,
+                                       @RequestBody IngredientDto ingredientDto){
         Ingredient ingredient = IngredientDtoConverter.fromDto(ingredientDto);
         ingredient.setId(id);
         String ingredientGroupName = ingredientDto.getIngredientGroupName();
@@ -76,7 +77,8 @@ public class IngredientController {
     }
 
     @GetMapping("/search")
-    public List<Ingredient> getByPageAndSize(@QueryParam("page")Integer page, @QueryParam("size")Integer size){
+    public List<Ingredient> getByPageAndSize(@QueryParam("page")Integer page,
+                                             @QueryParam("size")Integer size){
         return ingredientService.findAll(PageRequest.of(page, size)).getContent();
     }
 }
