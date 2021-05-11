@@ -1,8 +1,10 @@
-package com.maximalus.repository;
+package com.maximalus.repository.ingredient;
 
 import com.maximalus.TestData;
+import com.maximalus.exception.NotFoundException;
 import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.product.ingredient.Ingredient;
+import com.maximalus.repository.IngredientRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,20 +34,21 @@ public class IngredientRepositoryTest {
 
     @Test
     void findIngredientByIdThrowsException(){
-        Assertions.assertThrows(RestaurantManagerException.class, () -> {
+        Assertions.assertThrows(NotFoundException.class, () -> {
             ingredientRepository.findById(7L).orElseThrow(() ->
-                    new RestaurantManagerException(String.format("Ingredient with id $s does not exist", 7L)));
+                    new NotFoundException(String.format("Ingredient with id $s does not exist", 7L)));
         });
     }
 
     @Test
     void findAllIngredients(){
         List<Ingredient> expected = TestData.getListOfIngredients();
-        List<Ingredient> actual = (List<Ingredient>) ingredientRepository.findAll();
+        List<Ingredient> actual = ingredientRepository.findAll();
 
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
     void saveIngredient(){
 
     }

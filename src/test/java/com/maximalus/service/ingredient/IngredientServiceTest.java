@@ -1,4 +1,4 @@
-package com.maximalus.service;
+package com.maximalus.service.ingredient;
 
 import com.maximalus.TestData;
 import com.maximalus.model.product.ingredient.Ingredient;

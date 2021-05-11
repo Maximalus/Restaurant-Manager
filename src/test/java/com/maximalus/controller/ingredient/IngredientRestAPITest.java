@@ -1,4 +1,4 @@
-package com.maximalus.controller;
+package com.maximalus.controller.ingredient;
 
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
-
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IngredientRestAPITest {
     @LocalServerPort
@@ -17,6 +16,7 @@ public class IngredientRestAPITest {
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    //Spring security has to be disable before running this test
     @Test
     public void findById(){
         RestAssured

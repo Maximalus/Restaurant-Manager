@@ -1,4 +1,4 @@
-package com.maximalus.controller;
+package com.maximalus.controller.ingredient;
 
 import com.maximalus.TestData;
 import com.maximalus.controler.IngredientController;
