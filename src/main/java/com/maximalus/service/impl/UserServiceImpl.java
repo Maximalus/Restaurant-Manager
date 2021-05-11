@@ -1,5 +1,6 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.exception.NotFoundException;
 import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.Credential;
 import com.maximalus.model.User;
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User findById(Long id){
-        return userRepository.findById(id).orElseThrow(() -> new RestaurantManagerException(String.format("User with id %d does not exist", id)));
+        return userRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("User with id %d does not exist", id)));
     }
 
     public void deleteById(Long id){
