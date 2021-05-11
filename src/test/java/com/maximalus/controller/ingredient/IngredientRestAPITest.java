@@ -2,6 +2,7 @@ package com.maximalus.controller.ingredient;
 
 import io.restassured.RestAssured;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import com.maximalus.repository.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class IngredientRestAPITest {
 
     //Spring security has to be disable before running this test
     @Test
+    @Disabled
     public void findById(){
         RestAssured
                 .given()
