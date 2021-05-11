@@ -1,5 +1,6 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.exception.NotFoundException;
 import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.storage.IngredientStorage;
 import com.maximalus.repository.StorageRepository;
@@ -34,7 +35,7 @@ public class StorageServiceImpl implements StorageService {
         return storageRepository
                 .findById(id)
                 .orElseThrow(() ->
-                        new RestaurantManagerException(String.format("Storage with id $s does not exist", id)));
+                        new NotFoundException(String.format("Storage with id $s does not exist", id)));
     }
 
     @Override

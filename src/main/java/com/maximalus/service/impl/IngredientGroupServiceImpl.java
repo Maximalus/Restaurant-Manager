@@ -1,5 +1,6 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.exception.NotFoundException;
 import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.product.ingredient.IngredientGroup;
 import com.maximalus.repository.IngredientGroupRepository;
@@ -25,7 +26,7 @@ public class IngredientGroupServiceImpl implements IngredientGroupService {
     @Override
     public IngredientGroup findById(Long id){
         return ingredientGroupRepository.findById(id)
-                .orElseThrow(() -> new RestaurantManagerException(String.format("Ingredient group with id $s does not exist", id)));
+                .orElseThrow(() -> new NotFoundException(String.format("Ingredient group with id $s does not exist", id)));
     }
 
     @Override

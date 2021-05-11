@@ -1,5 +1,6 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.exception.NotFoundException;
 import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.Order;
 import com.maximalus.model.Outlet;
@@ -36,7 +37,7 @@ public class OutletServiceImpl implements OutletService {
 
     @Override
     public Outlet findById(Long id) {
-        return outletRepository.findById(id).orElseThrow(() -> new RestaurantManagerException(String.format("Outlet with id %d does not exist", id)));
+        return outletRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Outlet with id %d does not exist", id)));
     }
 
     @Override

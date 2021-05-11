@@ -1,5 +1,6 @@
 package com.maximalus.service.impl;
 
+import com.maximalus.exception.NotFoundException;
 import com.maximalus.exception.RestaurantManagerException;
 import com.maximalus.model.product.ingredient.Ingredient;
 import com.maximalus.repository.IngredientRepository;
@@ -26,7 +27,7 @@ public class IngredientServiceImpl implements IngredientService {
     public Ingredient findById(Long id){
         return ingredientRepository
                 .findById(id)
-                .orElseThrow(() -> new RestaurantManagerException("Ingredient with id " + id + " does not exists"));
+                .orElseThrow(() -> new NotFoundException("Ingredient with id " + id + " does not exists"));
     }
 
     public List<Ingredient> findAll(){
