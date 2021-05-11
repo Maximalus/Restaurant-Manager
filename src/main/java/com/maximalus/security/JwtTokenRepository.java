@@ -24,7 +24,11 @@ import static org.springframework.http.HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS
 @Repository
 public class JwtTokenRepository implements CsrfTokenRepository {
     @Getter
-    private String secret = "springrest";
+    @Value("${jwt.secret}")
+    private String secret;
+    @Value("${jwt.duration}")
+    private int duration;
+
 
     public JwtTokenRepository() {
         this.secret = secret;
