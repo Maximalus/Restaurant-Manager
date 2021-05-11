@@ -1,7 +1,7 @@
 package com.maximalus.model.product.item;
 
 import com.maximalus.model.Outlet;
-import com.maximalus.model.Recipe;
+import com.maximalus.model.product.Recipe;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

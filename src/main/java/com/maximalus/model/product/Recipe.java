@@ -1,5 +1,6 @@
-package com.maximalus.model;
+package com.maximalus.model.product;
 
+import com.maximalus.model.Outlet;
 import com.maximalus.model.product.ingredient.Ingredient;
 import com.maximalus.model.product.item.MenuItem;
 import lombok.Data;
