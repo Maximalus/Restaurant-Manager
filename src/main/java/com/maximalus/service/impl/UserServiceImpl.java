@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public void update(User user){
         user.setChangingDate(LocalDateTime.now());

@@ -18,9 +18,9 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class ReportServiceImpl implements ReportService {
-    private ReportRepository reportRepository;
-    private OutletServiceImpl outletService;
-    private IngredientServiceImpl ingredientService;
+    private final ReportRepository reportRepository;
+    private final OutletServiceImpl outletService;
+    private final IngredientServiceImpl ingredientService;
 
     private List<Order> orderList = new ArrayList<>();
     private List<Ingredient> ingredientList = new ArrayList<>();
