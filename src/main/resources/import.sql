@@ -24,28 +24,28 @@ INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES 
 
 DELETE FROM roles;
 ALTER SEQUENCE role_generator RESTART;
-INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ADMINISTRATOR');
-INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'GENERAL_MANAGER');
-INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'MANAGER');
-INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'CASHIER');
-INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'CAPTAIN');
-INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'WAITER');
-INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'DEFAULT');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ROLE_ADMINISTRATOR');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ROLE_GENERAL_MANAGER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ROLE_MANAGER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ROLE_CASHIER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ROLE_CAPTAIN');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ROLE_WAITER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ROLE_DEFAULT');
 
 DELETE FROM permissions;
 ALTER SEQUENCE permission_generator RESTART;
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'ADMIN-READ');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'ADMIN-WRITE');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'ADMIN_READ');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'ADMIN_WRITE');
 INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'GENERAL_MANAGER-READ');
 INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'GENERAL_MANAGER-WRITE');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'MANAGER-READ');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'MANAGER-WRITE');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CAPTAIN-READ');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CAPTAIN-WRITE');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CASHIER-READ');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CASHIER-WRITE');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'WAITER-READ');
-INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'WAITER-WRITE');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'MANAGER_READ');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'MANAGER_WRITE');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CAPTAIN_READ');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CAPTAIN_WRITE');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CASHIER_READ');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'CASHIER_WRITE');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'WAITER_READ');
+INSERT INTO permissions (id, name) VALUES (nextval('permission_generator'), 'WAITER_WRITE');
 
 DELETE FROM roles_permissions;
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1,1);

@@ -23,14 +23,14 @@ INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES 
 INSERT INTO outlets (id, name, is_deleted, creation_date, changing_date) VALUES (nextval('outlet_generator'), 'W cafe', false, '2021-03-01T16:06:44.332858', '2021-03-01T16:06:44.332858');
 
 DELETE FROM roles;
-ALTER SEQUENCE roles_generator RESTART;
-INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'ADMINISTRATOR');
-INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'GENERAL_MANAGER');
-INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'MANAGER');
-INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'CASHIER');
-INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'CAPTAIN');
-INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'WAITER');
-INSERT INTO roles (id, name) VALUES (nextval('roles_generator'), 'DEFAULT');
+ALTER SEQUENCE role_generator RESTART;
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'ADMINISTRATOR');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'GENERAL_MANAGER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'MANAGER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'CASHIER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'CAPTAIN');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'WAITER');
+INSERT INTO roles (id, name) VALUES (nextval('role_generator'), 'DEFAULT');
 
 DELETE FROM permissions;
 ALTER SEQUENCE permission_generator RESTART;
