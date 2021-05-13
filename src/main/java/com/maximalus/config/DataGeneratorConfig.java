@@ -26,7 +26,7 @@ public class DataGeneratorConfig implements InitializingBean {
         credential.setUsername("Maximalys");
         credential.setPassword("1");
         credential.setDeleted(false);
-        Role administrator = roleService.findByName("ADMINISTRATOR");
+        Role administrator = roleService.findByName("ROLE_ADMINISTRATOR");
         credential.setRole(administrator);
         credentialService.save(credential);
     }

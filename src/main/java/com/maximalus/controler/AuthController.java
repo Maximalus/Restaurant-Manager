@@ -1,53 +1,45 @@
 package com.maximalus.controler;
 
+import com.maximalus.dto.AuthenticationResponseDto;
 import com.maximalus.dto.CredentialDto;
-import com.maximalus.dto.converter.CredentialDtoConverter;
+import com.maximalus.exception.JwtAuthenticationException;
 import com.maximalus.model.Credential;
-import com.maximalus.model.Permission;
+import com.maximalus.model.Role;
+import com.maximalus.security.jwt.JwtTokenProvider;
 import com.maximalus.service.CredentialService;
+import com.maximalus.service.RoleService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping(value = "/api/v1/auth")
 @AllArgsConstructor
 public class AuthController {
-    private final CredentialService service;
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final CredentialService credentialService;
+    private final RoleService roleService;
 
-    @PostMapping(path = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody CredentialDto getAuthUser() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth == null) {
-            return null;
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody CredentialDto credentialDto){
+        try{
+            String username = credentialDto.getUsername();
+            String password = credentialDto.getPassword();
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            Credential credential = credentialService.findByUsername(username);
+            Role role = credential.getRole();
+            String token = jwtTokenProvider.createToken(username, role);
+            AuthenticationResponseDto responseDto = new AuthenticationResponseDto(username, token);
+            return ResponseEntity.ok(responseDto);
+        }catch (JwtAuthenticationException exception){
+            throw new BadCredentialsException("Invalid username or password");
         }
-        Object principal = auth.getPrincipal();
-        User user = (principal instanceof User) ? (User) principal : null;
-
-        Credential credential = Objects.nonNull(user) ? this.service.findByUsername(user.getUsername()) : null;
-
-        return getCredentialDto(credential);
-    }
-
-    private CredentialDto getCredentialDto(Credential credential){
-        Set<String> permissionsSet =
-                credential.getRole().getPermissions().stream()
-                        .map(Permission::getName).collect(Collectors.toSet());
-
-        CredentialDto credentialDto = CredentialDtoConverter.toDto(credential);
-        credentialDto.setPermissions(permissionsSet);
-
-        return credentialDto;
     }
 }
