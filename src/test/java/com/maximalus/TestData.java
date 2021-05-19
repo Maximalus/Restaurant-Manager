@@ -59,8 +59,8 @@ public class TestData {
 
     public static Ingredient getIngredient(){
         Ingredient ingredient = new Ingredient();
-        ingredient.setId(1L);
-        ingredient.setName("Grapefruit juice");
+        ingredient.setId(5L);
+        ingredient.setName("Soy milk");
         ingredient.setUnitName("Liter");
         ingredient.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
         ingredient.setChangingDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));

@@ -15,6 +15,9 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class IngredientRepositoryTest {
@@ -25,16 +28,24 @@ public class IngredientRepositoryTest {
     private TestEntityManager testEntityManager;
 
     @Test
+    void saveIngredient(){
+        Ingredient expected = TestData.getIngredient();
+        Ingredient actual = ingredientRepository.save(expected);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void findIngredientById(){
         Ingredient expected = TestData.getIngredient();
-        Ingredient actual = ingredientRepository.findById(expected.getId()).orElse(null);
+        Ingredient actual = ingredientRepository.findById(expected.getId()).get();
 
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
     void findIngredientByIdThrowsException(){
-        Assertions.assertThrows(NotFoundException.class, () -> {
+        assertThrows(NotFoundException.class, () -> {
             ingredientRepository.findById(7L).orElseThrow(() ->
                     new NotFoundException(String.format("Ingredient with id $s does not exist", 7L)));
         });
@@ -45,11 +56,8 @@ public class IngredientRepositoryTest {
         List<Ingredient> expected = TestData.getListOfIngredients();
         List<Ingredient> actual = ingredientRepository.findAll();
 
-        Assertions.assertEquals(expected, actual);
+        assertEquals(expected, actual);
     }
 
-    @Test
-    void saveIngredient(){
 
-    }
 }
