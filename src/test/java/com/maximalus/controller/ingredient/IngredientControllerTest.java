@@ -32,7 +32,7 @@ public class IngredientControllerTest {
 
     @Test
     public void findIngredientById(){
-        Ingredient ingredient = TestData.getListOfIngredients().get(1);
+        Ingredient ingredient = TestData.getListOfIngredients().get(0);
         IngredientGroup ingredientGroup = ingredientGroupService.findById(4L);
         ingredient.setIngredientGroup(ingredientGroup);
         IngredientDto expected = IngredientDtoConverter.toDto(ingredient);

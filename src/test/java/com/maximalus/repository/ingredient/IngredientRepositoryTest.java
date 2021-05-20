@@ -58,6 +58,4 @@ public class IngredientRepositoryTest {
 
         assertEquals(expected, actual);
     }
-
-
 }
