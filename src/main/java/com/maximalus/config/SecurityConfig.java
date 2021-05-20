@@ -1,5 +1,6 @@
 package com.maximalus.config;
 
+import com.maximalus.security.jwt.JwtConfigurer;
 import com.maximalus.security.jwt.JwtTokenProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -7,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
@@ -43,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .apply(new JwtConfigurer(jwtTokenProvider));
 
+        //Spring Security has been disabled for test purpose
         http.authorizeRequests().antMatchers("/").permitAll();
     }
 }
