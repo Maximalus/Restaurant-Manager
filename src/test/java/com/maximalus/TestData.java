@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestData {
-    public static IngredientGroup getIngredientGroup(){
+    public static IngredientGroup getIngredientGroupForSaving(){
         IngredientGroup ingredientGroup = new IngredientGroup();
         ingredientGroup.setId(5L);
         ingredientGroup.setName("Sauces");
@@ -57,9 +57,9 @@ public class TestData {
                 .collect(Collectors.toList());
     }
 
-    public static Ingredient getIngredient(){
+    public static Ingredient getIngredientForSaving(){
         Ingredient ingredient = new Ingredient();
-        ingredient.setId(5L);
+        ingredient.setId(6L);
         ingredient.setName("Soy milk");
         ingredient.setUnitName("Liter");
         ingredient.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));
@@ -117,9 +117,8 @@ public class TestData {
                 ingredient3, ingredient4, ingredient5).collect(Collectors.toList());
     }
 
-    public static Outlet getOutlet(){
+    public static Outlet getOutletForSaving(){
         Outlet outlet = new Outlet();
-        outlet.setId(7L);
         outlet.setName("Sazeli");
         outlet.setDeleted(false);
         outlet.setCreationDate(LocalDateTime.of(2021,3,1,16,6,44, 332858000));

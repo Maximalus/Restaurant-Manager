@@ -29,7 +29,7 @@ public class IngredientRepositoryTest {
 
     @Test
     void saveIngredient(){
-        Ingredient expected = TestData.getIngredient();
+        Ingredient expected = TestData.getIngredientForSaving();
         Ingredient actual = ingredientRepository.save(expected);
 
         assertEquals(expected, actual);
@@ -37,7 +37,7 @@ public class IngredientRepositoryTest {
 
     @Test
     void findIngredientById(){
-        Ingredient expected = TestData.getIngredient();
+        Ingredient expected = TestData.getListOfIngredients().get(1);
         Ingredient actual = ingredientRepository.findById(expected.getId()).get();
 
         assertEquals(expected, actual);

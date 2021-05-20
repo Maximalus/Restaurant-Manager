@@ -10,8 +10,14 @@ import com.maximalus.service.impl.IngredientGroupServiceImpl;
 import com.maximalus.service.impl.IngredientServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest
 public class IngredientControllerTest {
@@ -26,7 +32,7 @@ public class IngredientControllerTest {
 
     @Test
     public void findIngredientById(){
-        Ingredient ingredient = TestData.getIngredient();
+        Ingredient ingredient = TestData.getListOfIngredients().get(1);
         IngredientGroup ingredientGroup = ingredientGroupService.findById(4L);
         ingredient.setIngredientGroup(ingredientGroup);
         IngredientDto expected = IngredientDtoConverter.toDto(ingredient);

@@ -29,30 +29,35 @@ public class IngredientServiceTest {
 
     @Test
     public void findIngredientById(){
-        when(ingredientRepository.findById(6L)).thenReturn(Optional.of(TestData.getIngredient()));
+        Ingredient expected = TestData.getListOfIngredients().get(1);
 
-        Ingredient actual = ingredientService.findById(6L);
-        Ingredient expected = TestData.getIngredient();
+        when(ingredientRepository.findById(1L)).thenReturn(Optional.ofNullable(expected));
+
+        Ingredient actual = ingredientService.findById(1L);
+
 
         assertEquals(expected, actual);
     }
 
     @Test
     public void saveIngredient(){
-        when(ingredientRepository.save(TestData.getIngredient())).thenReturn(TestData.getIngredient());
+        Ingredient expected = TestData.getIngredientForSaving();
 
-        Ingredient actual = ingredientService.save(TestData.getIngredient());
-        Ingredient expected = TestData.getIngredient();
+        when(ingredientRepository.save(expected)).thenReturn(expected);
+
+        Ingredient actual = ingredientService.save(expected);
 
         assertEquals(expected, actual);
     }
 
     @Test
     public void updateIngredient(){
-        when(ingredientRepository.save(TestData.getIngredientForUpdate())).thenReturn(TestData.getIngredientForUpdate());
-
-        Ingredient actual = ingredientService.save(TestData.getIngredientForUpdate());
         Ingredient expected = TestData.getIngredientForUpdate();
+
+        when(ingredientRepository.save(expected)).thenReturn(expected);
+
+        Ingredient actual = ingredientService.save(expected);
+
 
         assertEquals(expected, actual);
     }
