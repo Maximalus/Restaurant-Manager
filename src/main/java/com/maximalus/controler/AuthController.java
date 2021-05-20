@@ -7,7 +7,6 @@ import com.maximalus.model.Credential;
 import com.maximalus.model.Role;
 import com.maximalus.security.jwt.JwtTokenProvider;
 import com.maximalus.service.CredentialService;
-import com.maximalus.service.RoleService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,13 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/auth")
+@RequestMapping(value = "/api/v1/auth")
 @AllArgsConstructor
 public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
     private final CredentialService credentialService;
-    private final RoleService roleService;
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody CredentialDto credentialDto){
