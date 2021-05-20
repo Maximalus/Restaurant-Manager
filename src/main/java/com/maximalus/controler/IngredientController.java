@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/ingredients")
+@RequestMapping("/api/v1/ingredients")
 @AllArgsConstructor
 public class IngredientController {
     private final IngredientService ingredientService;

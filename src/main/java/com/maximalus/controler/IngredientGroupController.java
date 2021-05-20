@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/ingredient_groups")
+@RequestMapping("/api/v1/ingredient_groups")
 @AllArgsConstructor
 public class IngredientGroupController {
     private final IngredientGroupService ingredientGroupService;
